@@ -1,5 +1,6 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
+import './UserList.css';
 import {Socket} from '../../Services/Socket';
 
 const UserList = () => {
@@ -19,12 +20,11 @@ const UserList = () => {
     }, []);
 
     return(
-        <div>
-            <h3>Users:</h3>
+        <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fill, 80px)', gridGap: '10px', gridAutoRows: 'minMax(60px, 60px)'}}>
             {usersInGame.map(user => (
-                <div>
-                    <p>{user.username}</p>
-                    <p>{user.amount}</p>
+                <div className="player">
+                    <div><strong>{user.username}</strong></div>
+                    <div>{user.amount} &#8364;</div>
                 </div>
                         ))}
         </div>

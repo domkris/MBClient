@@ -5,6 +5,7 @@ const Message = (props) => {
     var userCurrent = props.message.username;
     var text = props.message.text;
     var time = props.message.time;
+    var otherUser = props.message.otherUser;
     return (
         <div>
             <div className="message">
@@ -18,7 +19,9 @@ const Message = (props) => {
                 </div>
                 <div className="messageBody">
                         {text}
-                    
+                        {otherUser ?
+                            <div className="messageOtherUser">{otherUser}</div>
+                        : null}
                 </div>
             </div>   
         </div>    

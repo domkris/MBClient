@@ -24,6 +24,12 @@ div.messageUser {
     margin-top: -22px;
 }
 
+div.messageOtherUser{
+    color: rgb(95, 95, 95);
+    font-size: 16px;
+    font-weight: bold;
+}
+
 div.messageText {
     font-size: 13px;
     display: flex;

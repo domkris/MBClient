@@ -52,20 +52,6 @@ const Chat = () => {
         }); 
     },[usersInGame]);
 
-    
-    const submit = (event) => {
-        console.log(event.target.elements.money);
-        var gameMessage = event.target.elements.formMessage.value;
-        var money = event.target.elements.money.options;
-        var selectedIndex = money.selectedIndex;
-        var sendToUser = money[selectedIndex].value;  
-        event.target.elements.formMessage.value = null;
-        event.target.elements.formMessage.focus();
-        event.preventDefault();
-
-        // emit message to the server
-        Socket.emit("gameMessage",{username: username, text: gameMessage, otherUser: sendToUser});
-    }
     return(
     <div>
         <Container id="gameChat">
@@ -73,47 +59,11 @@ const Chat = () => {
                 <Col>
                     <Message message={welcomeMessage}></Message>
                     {gameMessages.map(gameMessage => (
-                        <Toast>
-                        <Toast.Header>
-                            <strong className="mr-auto">{gameMessage.text}<img src="https://image.flaticon.com/icons/svg/138/138281.svg"/></strong>
-                            <strong>{gameMessage.username} <img src="https://image.flaticon.com/icons/svg/1635/1635581.svg"/> {gameMessage.otherUser}  </strong>
-                        </Toast.Header>
-                        </Toast>
+                        <Message message={gameMessage}></Message>
                     ))}
                 </Col>
             </Row>
         </Container>
-        <br></br>
-        <Form onSubmit={submit}>
-            <Row>
-                <Col xs="6">
-                    <Row>
-                        <Col>
-                            <Form.Group controlId="formMessage">
-                                <Form.Control required name="gameMessage" type="text" pattern="[0-9]*"placeholder="Type amounth of money..." />
-                            </Form.Group>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col>
-                            <Form.Group controlId="money">
-                                <Form.Control required as="select" placeholder="send to">
-                                    <option disabled={true}></option>
-                                    {usersInGame.map(users => (
-                                        <option>{users.username}</option>
-                                    ))}
-                                </Form.Control>
-                            </Form.Group>
-                        </Col>
-                    </Row> 
-                </Col>
-                <Col xs="3">
-                    <Button id="sendMoneyButton" variant="outline-primary" type="submit">
-                         Send <img src="https://image.flaticon.com/icons/svg/138/138281.svg"/>
-                    </Button>
-                </Col>
-            </Row>
-        </Form>
     </div>
     );
 
