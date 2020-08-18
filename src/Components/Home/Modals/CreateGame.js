@@ -23,7 +23,6 @@ const CreateGame = (props) => {
         setShowErrorPassword(false);
         setShowErrorAmount(false);
     };
-    const handleCreateGameModalShow = () => setShowCreateGameModal(true);
     
     const createGame = () => {
         if(gameName && gamePassword && gameAmount){
@@ -37,7 +36,7 @@ const CreateGame = (props) => {
             .then((response) => response.json())
             .then((data) => {
                 if(data.success){
-                    sessionStorage.setItem("game", data.gameData[0]._id + "," + data.gameData[0].name + "," + data.gameData[0].amount);
+                    sessionStorage.setItem("game", data.gameData._id + "," + data.gameData.name + "," + data.gameData.amount);
                     handleCreateGameModalClose();
                     props.handleRedirect(true);
                 }else{
@@ -73,7 +72,6 @@ const CreateGame = (props) => {
     }
     useEffect(() => {
         setShowCreateGameModal(props.showModal)
-        console.log(props.showModal);
       },[props.showModal]);
 
     return(

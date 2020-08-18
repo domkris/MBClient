@@ -2,11 +2,8 @@ import React from 'react';
 import './Message.css';
 const Message = (props) => {
 
-    console.log("Hej " + JSON.stringify(props));
-    console.log(JSON.stringify(props.message));
     var userCurrent = props.message.username;
     var text = props.message.text;
-    var usertoSent = "Test";
     var time = props.message.time;
     return (
         <div>

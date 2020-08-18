@@ -17,7 +17,6 @@ const JoinGame = (props) => {
         setShowErrorName(false);
         setShowErrorPassword(false);
     }
-    const handleJoinGameModalShow = () => setShowJoinGameModal(true);
 
     var change = (e) => {
         if(e.target.name === "gameName"){
@@ -65,7 +64,6 @@ const JoinGame = (props) => {
     }
     useEffect(() => {
         setShowJoinGameModal(props.showModal)
-        console.log(props.showModal);
       },[props.showModal]);
 
       return(

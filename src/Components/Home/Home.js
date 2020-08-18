@@ -5,10 +5,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import CreateGameModal from '../Home/Modals/CreateGame';
 import JoinGameModal from '../Home/Modals/JoinGame';
-import Form from 'react-bootstrap/Form';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import {Redirect} from 'react-router-dom';
-import {PostData} from '../../Services/PostData';
 import './Home.css';
 
 
@@ -26,7 +24,7 @@ class Home extends React.Component{
             showCreateGameModal: false,
             showJoinGameModal: false
         }
-        console.log(this.state.showCreateGameModal);
+        
         this.logout = this.logout.bind(this);
         this.joinGame = this.joinGame.bind(this);
         this.change = this.change.bind(this);

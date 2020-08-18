@@ -1,7 +1,6 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
 
-import {Redirect, Route} from 'react-router-dom';
 import {Socket} from '../../Services/Socket'; 
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
@@ -33,7 +32,6 @@ const Chat = () => {
         Socket.on("welcomeMessage", (message) => {
             setWelcomeMessage(message);
             setConnected(true)
-            console.log(message);
         });
 
         Socket.on("message", (message) => {
@@ -51,7 +49,6 @@ const Chat = () => {
     useEffect(() => {
         Socket.on("usersInGame", (data) => {
             setUsersInGame(data.users);
-            console.log(usersInGame);
         }); 
     },[usersInGame]);
 

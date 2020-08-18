@@ -1,9 +1,8 @@
 import React from 'react';
 import {Redirect, Route} from 'react-router-dom';
-import {Socket} from '../../Services/Socket'; 
-import Button from 'react-bootstrap/Button';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Chat from '../Chat/Chat';
@@ -41,6 +40,7 @@ class Game extends React.Component{
         }else {
             this.setState({homeRedirect: true});
             this.setState({gameName: sessionStorage.getItem("game")});
+            this.setState({username: sessionStorage.getItem("userData").split(",")[1]});
         }
     }   
   render(){
@@ -73,21 +73,23 @@ class Game extends React.Component{
         <div>
             <Container className="GameJumbotron">
                 <Jumbotron id="AppJumbotron">
+                    <p>
+                        <h2>Game: <strong>{sessionStorage.getItem("game").split(",")[1]}</strong></h2>
+                    </p>
+                    <p>
+                        <h3>Player: <strong>{sessionStorage.getItem("userData").split(",")[1]}</strong></h3>
+                    </p>  
                 </Jumbotron>
             </Container>
             <Container>
                 <Row>
                     <Col xs="1"></Col>
                     <Col xs="3">
-                        <span id="myButton" onClick={alert} onClick= {this.exitGame}>
-                            <Image src="https://image.flaticon.com/icons/svg/833/833557.svg" rounded />
-                        </span>
+                        <Button variant="outline-primary" onClick= {this.exitGame}> &#8592; Go Back </Button>{' '}
                     </Col>
                     <Col xs="5"></Col>
                     <Col xs="3">
-                        <span id="myButton" onClick={alert}  onClick= {this.logout}>
-                            <Image src="https://image.flaticon.com/icons/svg/889/889896.svg" rounded />
-                        </span>
+                        <Button variant="outline-secondary" onClick= {this.logout}>Log out &#9746;</Button>{' '}
                     </Col>
                 </Row>
                 <br></br>
