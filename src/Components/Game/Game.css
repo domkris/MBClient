@@ -1,0 +1,22 @@
+.GameForm {
+    border-bottom: 1px solid gray;
+    border-top: 1px solid rgba(128, 128, 128, 0.3);
+    border-left: 1px solid rgba(128, 128, 128, 0.3);
+    border-right: 1px solid gray;
+    box-shadow: 3px 3px 5px #888888;
+    padding-top: 4%;
+    background-color: rgba(33, 172, 72, 0.555);
+    opacity: 90%;
+}
+
+#myButton{
+    background-color: rgba(255, 255, 255, 0.177);
+    box-shadow: 3px 3px 5px #888888;
+    padding: 5%;
+}
+
+#myButton:hover {
+    background-color: red;
+  }
+
+
