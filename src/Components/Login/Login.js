@@ -6,6 +6,9 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import {Redirect, Route} from 'react-router-dom';
 import Jumbotron from 'react-bootstrap/Jumbotron';
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Login.css';
 
@@ -129,18 +132,16 @@ class Login extends React.Component{
         }
         return (
         <div>
-            <Container>
-                <Row>
-                    <Col>
-                        <Jumbotron id="AppJumbotron">
-                            <h1>MonopolBank web</h1>
-                            <p>
-                            Welcome to a web page made for virtual games cash transactions.
-                            </p>
-                        </Jumbotron>
-                    </Col>
-                    </Row>
-            </Container>
+            <Navbar bg="light" expand="lg">
+                <Navbar.Brand href="login"><img src="eurocoin_64px.png" alt=""></img>MBank</Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="mr-auto">
+                    <Nav.Link href="help">Help</Nav.Link>
+                    </Nav>
+                </Navbar.Collapse>
+            </Navbar>
+            <img id="monopolbankImage"src="eurocoin_11.png"></img>
             <Container className="LoginForm">
                <Row>
                    <Col>

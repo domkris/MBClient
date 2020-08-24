@@ -98,7 +98,7 @@ const CreateGame = (props) => {
                             </div> : null}
                     </Form.Group>
                     <Form.Group controlId="formGameAmmount">
-                        <Form.Label>Starting ammount</Form.Label>
+                        <Form.Label>Starting amount</Form.Label>
                         <Form.Control required name="gameAmount" type="text" pattern="[0-9]*" placeholder="Amount"onChange={change}/>
                         {showErrorAmount ? 
                             <div style={{color: "red"}}>

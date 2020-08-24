@@ -1,29 +1,27 @@
-.message{
+
+.transaction{
     display: grid;
     grid-template-columns: 12px 1fr;
     grid-template-rows: 20px 1fr;
     margin-bottom: 2%;
+    
 }
 
-.messageImage{
-    background-color: greenyellow;
-    grid-row-start: 1;
-    grid-row-end: 3;
-}
-.messageImageUserJoined{
-    background-color: turquoise;
+.transactionImage{
+    background-color: deeppink;
     grid-row-start: 1;
     grid-row-end: 3;
 }
 
-.messageHeader{
+.transactionHeader{
     margin-left: 0.5%;
     display: grid;
     grid-template-columns: 6fr 1fr;
 }
-.messageBody{
+
+.transactionBody{
     margin-left: 0.5%;
 }
-.messageTitle{
-    color:rgba(0, 0, 0, 0.387);
+.transactionTitle{
+    color: rgba(0, 0, 0, 0.387);
 }

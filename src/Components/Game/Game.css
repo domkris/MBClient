@@ -1,10 +1,8 @@
 
 .GameDiv{
-    height: 100vh;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 8fr 1fr;
-    grid-template-areas: "welcomeDiv welcomeDiv" "navigationDiv navigationDiv" "gameMainDispayDiv gameMainDispayDiv" "sendMoneyForm sendMoneyForm";
+    grid-template-areas:  "gameMainDispayDiv gameMainDispayDiv";
 }
 .GameForm {
     border-bottom: 1px solid gray;
@@ -17,38 +15,22 @@
     opacity: 90%;
 }
 
-.welcomeDiv{
-    grid-area: welcomeDiv;
-    padding: 2%;
-}
-.navigationDiv{
-    grid-area: navigationDiv;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr;
-    grid-template-areas: ". goBackButton . . logoutButton .";
-}
-#logoutButton{
-    grid-area: logoutButton;
-}
-#goBackButton{
-    grid-area: goBackButton;
-}
-
 .gameMainDispayDiv{
     margin: 3%;
     grid-area: gameMainDispayDiv;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-areas: " chatDiv chatDiv userListDiv ";
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.2fr 1fr;
+    grid-template-areas: "userListDiv " " chatDiv ";
 }
 
 #chatDiv{
     grid-area: chatDiv;
+    
+    opacity: 90%;
     display: flex;
     flex-direction: column-reverse;
-    border: yellow solid;
-    height: 55vh;
+    height: 59vh;
     overflow: auto;
     padding: 1%;
 }
@@ -56,23 +38,13 @@
 #userListDiv{
     grid-area: userListDiv;
     padding: 2%;
+    margin-left: 2%;
 }
 
-.sendMoneyForm{
-    grid-area: sendMoneyForm;
-    align-items: center;
-    margin-left: 19%;
-    margin-bottom: 3%;
-    display: grid;
-    grid-gap: 6%;
-}
 @media (max-width : 440px) {
+    
     #chatDiv{
-        grid-area: chatDiv;
-        border: yellow solid;
-        height: 65vh;
-        overflow: auto;
-        padding: 1%;
+        height: 55vh;
     }
 
 }

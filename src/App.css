@@ -13,11 +13,9 @@ h1 {
     opacity: 90%; 
 } 
 body{
-    font-family: 'Alike Angular';
+    font-family: 'Open sans';
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: 100vh;
-    background: rgb(249,255,153);
-    background: linear-gradient(90deg, rgba(249,255,153,1) 0%, rgba(255,255,255,1) 15%, rgba(255,255,255,1) 83%, rgba(250,254,255,1) 89%, rgba(203,242,255,1) 100%, rgba(167,216,230,1) 100%);
 } 

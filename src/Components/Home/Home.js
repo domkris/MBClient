@@ -2,6 +2,8 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
 import Col from 'react-bootstrap/Col';
 import CreateGameModal from '../Home/Modals/CreateGame';
 import JoinGameModal from '../Home/Modals/JoinGame';
@@ -113,11 +115,28 @@ class Home extends React.Component{
         var username = sessionStorage.getItem("userData").split(',')[1]
         return(
             <div>
+                <Navbar bg="light" expand="lg">
+                    <Navbar.Brand href="login"><img src="eurocoin_64px.png" alt=""></img>MBank</Navbar.Brand>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav">
+                        <Nav className="mr-auto">
+                        <Nav.Link href="help">Help</Nav.Link>
+                        </Nav>
+                        <Nav>
+                            <Nav.Link >
+                                Player <strong>{username}</strong>
+                            </Nav.Link>
+                            <Nav.Link href="" onClick={this.logout}>Logout</Nav.Link>
+                        </Nav>
+                    </Navbar.Collapse>
+                </Navbar>
                  <Container>
                     <Row>
                         <Col>
                             <Jumbotron id="AppJumbotron">
-                                <h1>Welcome player: {username}</h1>
+                                <p> 
+                                    <h3>Create a new game or join an existing game</h3>
+                                </p>
                             </Jumbotron>
                         </Col>
                     </Row>
@@ -135,9 +154,6 @@ class Home extends React.Component{
                         </Col>
                         <Col>
                             <Button variant="outline-primary" onClick = {this.showJoinGameModal}>Join Game</Button>
-                        </Col>
-                        <Col>
-                            <Button variant="outline-dark"  onClick= {this.logout}>Logout</Button>
                         </Col>
                     </Row>
                 </Container>

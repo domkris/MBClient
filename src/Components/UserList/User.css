@@ -1,0 +1,15 @@
+.mainUser{
+    display: grid;
+    grid-template-columns: 80px;
+    grid-gap: 19%;
+    grid-template-rows: 1fr 1fr;
+}
+
+.playerName{
+    text-align: center;
+}
+
+.playerAmount{
+    text-align: center;
+    padding-bottom: -10%;
+}

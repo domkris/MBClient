@@ -9,6 +9,7 @@ import Form from 'react-bootstrap/Form';
 import Toast from 'react-bootstrap/Toast';
 import Container from 'react-bootstrap/Container';
 import Message from '../Message/Message';
+import Transaction from '../Transaction/Transaction';
 import './Chat.css';
 
 const Chat = () => {
@@ -52,15 +53,28 @@ const Chat = () => {
         }); 
     },[usersInGame]);
 
+    useEffect(() => {
+        Socket.on("transaction", (newTransaction) => {
+            setGameMessages([...gameMessages, newTransaction]);
+        }); 
+    },[gameMessages]);
+
     return(
     <div>
         <Container id="gameChat">
             <Row>
                 <Col>
                     <Message message={welcomeMessage}></Message>
-                    {gameMessages.map(gameMessage => (
-                        <Message message={gameMessage}></Message>
-                    ))}
+                    {gameMessages.map((gameMessage, i) => {
+                        if(gameMessage.type == "transaction"){
+                            return(<Transaction key={i} message={gameMessage}></Transaction>);
+                        }else if (gameMessage.type == "message"){
+                            return(<Message key={i} message={gameMessage}></Message>);
+                        }else if (gameMessage.type == "userStatus"){
+                            return(<Message key={i} message={gameMessage}></Message>);
+                        }
+                        }
+                    )}
                 </Col>
             </Row>
         </Container>

@@ -11,7 +11,12 @@
     animation-duration: 3s;
     animation: slidein .7s ease-in;
 }
+#monopolbankImage{
+    height: 35%;
+    width: 55%;
+    margin-left: 20%;
 
+}
 .LoginError {
     box-shadow: 3px 3px 5px #888888;
     padding: 14px;
@@ -31,4 +36,16 @@
     80%{transform: skew(0deg) translate(0);}
     90%{transform: skew(-5deg);}
     100%{transform: skew(0deg);}
+}
+
+@media (max-width : 440px) {
+
+    #monopolbankImage{
+        height: 45%;
+        width: 65%;
+        margin-left: 20%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+    
+    }
 }
