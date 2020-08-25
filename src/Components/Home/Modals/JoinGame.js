@@ -31,7 +31,7 @@ const JoinGame = (props) => {
     const joinGame = () => {
         if(gameName && gamePassword){ 
             var data = {gameName : gameName, gamePassword: gamePassword}
-            var apiUrl = "http://localhost:3002/games/joinGame";
+            var apiUrl = "https://monopolbank.herokuapp.com/games/joinGame";
             fetch(apiUrl, {
                 method: 'POST', // or 'PUT'
                 headers: {

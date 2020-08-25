@@ -34,7 +34,7 @@ class Login extends React.Component{
     login(){
         if(this.state.username && this.state.password){
             var data = { username: this.state.username, password : this.state.password };
-            fetch('http://localhost:3002/users/login', {
+            fetch('https://monopolbank.herokuapp.com/users/login', {
                 method: 'POST', // or 'PUT'
                 headers: {
                   'Content-Type': 'application/json',
@@ -71,7 +71,7 @@ class Login extends React.Component{
     }
     register(){
         var data = { username: this.state.username, password : this.state.password };
-        fetch('http://localhost:3002/users/', {
+        fetch('https://monopolbank.herokuapp.com/users/', {
                 method: 'POST', // or 'PUT'
                 headers: {
                   'Content-Type': 'application/json',

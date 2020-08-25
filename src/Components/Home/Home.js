@@ -60,7 +60,7 @@ class Home extends React.Component{
         }
     }
     joinGame(){
-        var apiUrl = "http://localhost:3002/games/" + this.state.gameId;
+        var apiUrl = "https://monopolbank.herokuapp.com/games/" + this.state.gameId;
         fetch(apiUrl)
         .then((response) => response.json())
         .then((data) => {
@@ -76,7 +76,7 @@ class Home extends React.Component{
 
     }
     findGame(){
-        var apiUrl = "http://localhost:3001/games/" + sessionStorage.getItem("userData").split(',')[0];
+        var apiUrl = "https://monopolbank.herokuapp.com/games/" + sessionStorage.getItem("userData").split(',')[0];
         fetch(apiUrl)
         .then((response) => response.json())
         .then((data) => {
