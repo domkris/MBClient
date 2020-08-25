@@ -26,7 +26,7 @@ const CreateGame = (props) => {
     
     const createGame = () => {
         if(gameName && gamePassword && gameAmount){
-            var apiUrl = "https://monopolbank.herokuapp.com/games";
+            var apiUrl = "https://mbanksrvr.herokuapp.com/games";
             fetch(apiUrl,{
                 method: 'POST',
                 headers: {
