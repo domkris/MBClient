@@ -4,7 +4,6 @@ const Message = (props) => {
     var userCurrent = props.message.username;
     var text = props.message.text;
     var time = props.message.time;
-    var otherUser = props.message.otherUser;
     var type = props.message.type;
 
     return (

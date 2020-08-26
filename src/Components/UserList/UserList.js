@@ -1,7 +1,6 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
 import './UserList.css';
-import Button from 'react-bootstrap/Button';
 import {Socket} from '../../Services/Socket';
 import SendMoneyModal from '../Home/Modals/SendMoney';
 import User from '../UserList/User';

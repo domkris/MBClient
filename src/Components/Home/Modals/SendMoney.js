@@ -3,7 +3,6 @@ import {useState, useEffect} from 'react';
 import {Socket} from '../../../Services/Socket'
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
 import './SendMoney.css';
 
 const SendMoneyModal = (props) => {

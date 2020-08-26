@@ -1,9 +1,6 @@
 import React from 'react';
-import {useState, useEffect} from 'react';
 import './User.css';
 import Button from 'react-bootstrap/Button';
-import {Socket} from '../../Services/Socket';
-import SendMoneyModal from '../Home/Modals/SendMoney';
 
 const User = (props) => {
     var userCurrent = sessionStorage.getItem("userData").split(',')[1];

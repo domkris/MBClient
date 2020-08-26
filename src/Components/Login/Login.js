@@ -5,10 +5,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import {Redirect, Route} from 'react-router-dom';
-import Jumbotron from 'react-bootstrap/Jumbotron';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Login.css';
 
@@ -56,15 +54,6 @@ class Login extends React.Component{
               .catch((error) => {
                 console.error('Error:', error);
               });
-            // console.log("evo ga")
-            // console.log(this.state);
-            // await PostData('users/login',{ username: this.state.username, password : this.state.password }).then((result) => {
-            //     let responseJSON = result;
-            //     if(responseJSON.success){
-            //         sessionStorage.setItem('userData', responseJSON.userData._id + "," + responseJSON.userData.username);
-            //         this.setState({redirect : true});
-            //     }
-            // });
         }else {
             // upisi da je doslo do greske 
         }
