@@ -8,7 +8,6 @@ import './SendMoney.css';
 const SendMoneyModal = (props) => {
     
     
-    var commaClicked = false;
     var username = sessionStorage.getItem("userData").split(',')[1];
     const [showModal, setShowModal] = useState(false);
     const [amount, setAmount] = useState([]);
@@ -20,12 +19,11 @@ const SendMoneyModal = (props) => {
 
     var makeTransaction = (e) =>{
         var money = amount.join('');
-        console.log("HEEEJ " + money);
         Socket.emit("transaction",{username: username, amountArray: money, otherUser: props.userClicked});
         setAmount([]);
     }
     var changeAmount = (e, input) => {
-        if(input == "clear"){
+        if(input === "clear"){
             if(amount.length > 0){
                 setAmount(amount.slice(0,-1));
             }

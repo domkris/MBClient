@@ -130,7 +130,7 @@ class Login extends React.Component{
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
-            <img id="monopolbankImage"src="eurocoin_11.png"></img>
+            <img id="monopolbankImage"src="eurocoin_11.png" alt="MonopolBank"></img>
             <Container className="LoginForm">
                <Row>
                    <Col>

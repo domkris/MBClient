@@ -108,12 +108,12 @@ class Game extends React.Component{
                         <Nav.Link href="help">Help</Nav.Link>
                         <Nav.Link>
                             <Button variant="outline-secondary" size="sm">
-                                <img src="central_bank_euro.png" width="25px" height="25px"></img> Send
+                                <img src="central_bank_euro.png" width="25px" height="25px" alt="Send"></img> Send
                             </Button>
                         </Nav.Link>
                         <Nav.Link>
                             <Button variant="outline-secondary" size="sm">
-                                <img src="central_bank_euro.png" width="25px" height="25px"></img> Get
+                                <img src="central_bank_euro.png" width="25px" height="25px" alt="Get"></img> Get
                             </Button>
                         </Nav.Link>
                         </Nav>

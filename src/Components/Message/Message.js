@@ -8,7 +8,7 @@ const Message = (props) => {
 
     return (
         <div className="message">
-            {type == "userStatus" ? <div className="messageImageUserJoined"></div> : <div className="messageImage"></div>}
+            {type === "userStatus" ? <div className="messageImageUserJoined"></div> : <div className="messageImage"></div>}
             <div className="messageHeader">
                 <div className="messageTitle">{userCurrent}</div>
                 <div className="messageTime">{time}</div>

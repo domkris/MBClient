@@ -8,7 +8,7 @@ const User = (props) => {
     var amount = props.user.amount;
     return(
         <div className="mainUser">
-            { username != userCurrent ? 
+            { username !== userCurrent ? 
                 <Button variant="outline-dark">
                     <div className="playerName"><strong>{username}</strong></div>
                     <div className="playerAmount">{amount} &#8364;</div>

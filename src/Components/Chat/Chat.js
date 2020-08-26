@@ -63,11 +63,11 @@ const Chat = () => {
                 <Col>
                     <Message message={welcomeMessage}></Message>
                     {gameMessages.map((gameMessage, i) => {
-                        if(gameMessage.type == "transaction"){
+                        if(gameMessage.type === "transaction"){
                             return(<Transaction key={i} message={gameMessage}></Transaction>);
-                        }else if (gameMessage.type == "message"){
+                        }else if (gameMessage.type === "message"){
                             return(<Message key={i} message={gameMessage}></Message>);
-                        }else if (gameMessage.type == "userStatus"){
+                        }else if (gameMessage.type === "userStatus"){
                             return(<Message key={i} message={gameMessage}></Message>);
                         }
                         }

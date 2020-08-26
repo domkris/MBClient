@@ -34,7 +34,7 @@ const UserList = () => {
     return(
         <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fill, 80px)', gridGap: '10px', gridAutoRows: 'minMax(60px, 60px)'}}>
             {usersInGame.map((user, i) => {
-                if(user.username == username){
+                if(user.username === username){
                     return(
                         <div className="main" key={i}>
                             <User user={user}></User>
