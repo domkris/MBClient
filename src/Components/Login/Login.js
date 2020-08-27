@@ -139,7 +139,7 @@ class Login extends React.Component{
                                 <Col>
                                     <Form.Group controlId="formBasicUsername">
                                         <Form.Label>Username</Form.Label>
-                                        <Form.Control required name="username" minLength="4" maxLength="20" placeholder="Enter username" onChange= {this.change}/>
+                                        <Form.Control required name="username" minLength="4" maxLength="20" placeholder="Enter username" onChange= {this.change} autocomplete="on"/>
                                     </Form.Group>
                                 </Col>
                             </Row>
@@ -147,7 +147,7 @@ class Login extends React.Component{
                                 <Col>
                                     <Form.Group required controlId="formBasicPassword">
                                         <Form.Label>Password</Form.Label>
-                                        <Form.Control required name="password" minLength="4" maxLength="25" type="password" placeholder="Password" onChange= {this.change}/>
+                                        <Form.Control required name="password" minLength="4" maxLength="25" type="password" placeholder="Password" onChange= {this.change} autocomplete="on"/>
                                     </Form.Group>
                                 </Col>
                             </Row>
