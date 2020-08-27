@@ -1,7 +1,6 @@
 import React from 'react';
 import './Components/Login/Login';
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.css';
 import Login from './Components/Login/Login';
 import Home from './Components/Home/Home';
 import Game from './Components/Game/Game';
