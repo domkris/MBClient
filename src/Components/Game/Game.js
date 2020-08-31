@@ -50,10 +50,14 @@ class Game extends React.Component{
     }
     
     exitGame(){
+        var username = sessionStorage.getItem("userData").split(',')[1];
+        Socket.emit("userLeftGame");
         sessionStorage.removeItem("game");
         this.setState({homeRedirect: true});
     }
     logout(){
+        var username = sessionStorage.getItem("userData").split(',')[1];
+        Socket.emit("userLogOut");
         sessionStorage.removeItem("userData");
         this.setState({loginRedirect: true});
     }

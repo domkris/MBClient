@@ -1,5 +1,6 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
+import {ServerUrl} from '../../../Services/ServerUrl';
 
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
@@ -31,7 +32,7 @@ const JoinGame = (props) => {
     const joinGame = () => {
         if(gameName && gamePassword){ 
             var data = {gameName : gameName, gamePassword: gamePassword}
-            var apiUrl = "https://mbanksrvr.herokuapp.com/games/joinGame";
+            var apiUrl = ServerUrl + "/games/joinGame";
             fetch(apiUrl, {
                 method: 'POST', // or 'PUT'
                 headers: {

@@ -8,6 +8,7 @@ import {Redirect, Route} from 'react-router-dom';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {ServerUrl} from '../../Services/ServerUrl';
 import './Login.css';
 
 class Login extends React.Component{
@@ -30,9 +31,10 @@ class Login extends React.Component{
     }
 
     login(){
+        console.log(ServerUrl);
         if(this.state.username && this.state.password){
             var data = { username: this.state.username, password : this.state.password };
-            fetch('https://mbanksrvr.herokuapp.com/users/login', {
+            fetch(ServerUrl + '/users/login', {
                 method: 'POST', // or 'PUT'
                 headers: {
                   'Content-Type': 'application/json',
@@ -60,7 +62,7 @@ class Login extends React.Component{
     }
     register(){
         var data = { username: this.state.username, password : this.state.password };
-        fetch('https://mbanksrvr.herokuapp.com/users/', {
+        fetch(ServerUrl + '/users/', {
                 method: 'POST', // or 'PUT'
                 headers: {
                   'Content-Type': 'application/json',

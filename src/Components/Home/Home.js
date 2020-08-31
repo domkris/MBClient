@@ -9,6 +9,7 @@ import CreateGameModal from '../Home/Modals/CreateGame';
 import JoinGameModal from '../Home/Modals/JoinGame';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import {Redirect} from 'react-router-dom';
+import {ServerUrl} from '../../Services/ServerUrl';
 import './Home.css';
 
 
@@ -60,7 +61,7 @@ class Home extends React.Component{
         }
     }
     joinGame(){
-        var apiUrl = "https://mbanksrvr.herokuapp.com/games/" + this.state.gameId;
+        var apiUrl = ServerUrl + "/games/" + this.state.gameId;
         fetch(apiUrl)
         .then((response) => response.json())
         .then((data) => {
@@ -76,7 +77,7 @@ class Home extends React.Component{
 
     }
     findGame(){
-        var apiUrl = "https://mbanksrvr.herokuapp.com/games/" + sessionStorage.getItem("userData").split(',')[0];
+        var apiUrl = ServerUrl + "/games/" + sessionStorage.getItem("userData").split(',')[0];
         fetch(apiUrl)
         .then((response) => response.json())
         .then((data) => {

@@ -1,5 +1,6 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
+import {ServerUrl} from '../../../Services/ServerUrl';
 
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
@@ -26,7 +27,7 @@ const CreateGame = (props) => {
     
     const createGame = () => {
         if(gameName && gamePassword && gameAmount){
-            var apiUrl = "https://mbanksrvr.herokuapp.com/games";
+            var apiUrl = ServerUrl + "/games";
             fetch(apiUrl,{
                 method: 'POST',
                 headers: {
