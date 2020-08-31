@@ -6,7 +6,6 @@
     box-shadow: 3px 3px 5px #888888;
     padding: 14px;
     background-color: rgba(255, 255, 255, 0.555);
-    opacity: 90%;
 
     animation-duration: 3s;
     animation: slidein .7s ease-in;
@@ -22,7 +21,6 @@
     padding: 14px;
     width: 50%;
     background-color: rgba(255, 0, 0, 0.177);
-    opacity: 90%;
 
     animation-duration: 3s;
     animation: slidein .7s ease-in;
