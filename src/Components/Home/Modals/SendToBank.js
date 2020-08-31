@@ -5,7 +5,7 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import './Money.css';
 
-const GetFromBank = (props) => {
+const SendToBank = (props) => {
     
     
     var username = sessionStorage.getItem("userData").split(',')[1];
@@ -19,7 +19,7 @@ const GetFromBank = (props) => {
 
     var makeTransaction = (e) =>{
         var money = amount.join('');
-        Socket.emit("fromBankTransaction", {username: username, amountArray: money});
+        Socket.emit("toBankTransaction", {username: username, amountArray: money});
         setAmount([]);
     }
     var changeAmount = (e, input) => {
@@ -69,7 +69,7 @@ const GetFromBank = (props) => {
                     handleModalClose();
                     }
                 }>
-                    Get
+                    Send
                 </Button>
                 </Modal.Footer>
             </Modal>
@@ -77,4 +77,4 @@ const GetFromBank = (props) => {
     );
 }
 
-export default GetFromBank;
+export default SendToBank;

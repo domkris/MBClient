@@ -56,6 +56,18 @@ const Chat = () => {
         }); 
     },[gameMessages]);
 
+    useEffect(() => {
+        Socket.on("toBankTransaction", (newToBankTransaction) => {
+            setGameMessages([...gameMessages, newToBankTransaction]);
+        }); 
+    },[gameMessages]);
+
+    useEffect(() => {
+        Socket.on("fromBankTransaction", (newFromBankTransaction) => {
+            setGameMessages([...gameMessages, newFromBankTransaction]);
+        }); 
+    },[gameMessages]);
+
     return(
     <div>
         <Container id="gameChat">
@@ -69,8 +81,12 @@ const Chat = () => {
                             return(<Message key={i} message={gameMessage}></Message>);
                         }else if (gameMessage.type === "userStatus"){
                             return(<Message key={i} message={gameMessage}></Message>);
+                        }else if(gameMessage.type === "toBankTransaction"){
+                            return(<Transaction key={i} message={gameMessage}></Transaction>);
+                        }else if(gameMessage.type === "fromBankTransaction"){
+                            return(<Transaction key={i} message={gameMessage}></Transaction>);
                         }
-                        }
+                    }
                     )}
                 </Col>
             </Row>

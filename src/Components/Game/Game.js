@@ -6,6 +6,8 @@ import Button from 'react-bootstrap/Button';
 import Nav from 'react-bootstrap/Nav';
 import Chat from '../Chat/Chat';
 import UserList from '../UserList/UserList';
+import GetMoneyFromBankModal from '../Home/Modals/GetFromBank';
+import SendMoneyToBankModal from '../Home/Modals/SendToBank';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Game.css';
 class Game extends React.Component{
@@ -19,12 +21,15 @@ class Game extends React.Component{
             homeRedirect: false,
             loginRedirect: false,
             usersInGame: [],
-            showModal: false
+            showModal: false,
+            showGetFromBankModal: false
         }
         this.exitGame = this.exitGame.bind(this);
         this.logout = this.logout.bind(this);
         this.submit = this.submit.bind(this);
         this.showModal = this.showModal.bind(this);
+        this.showGetFromBankModal = this.showGetFromBankModal.bind(this);
+        this.showSendToBankModal = this.showSendToBankModal.bind(this);
     }
     submit = (event) => {
         console.log(event.target.elements.money);
@@ -41,11 +46,25 @@ class Game extends React.Component{
         Socket.emit("gameMessage",{username: username, text: gameMessage, otherUser: sendToUser});
     }
     showModal(){
-        console.log("showModal");
         if(this.state.showModal){
             this.setState({showModal : false}, console.log(this.state.showModal));
         }else{
             this.setState({showModal : true}, console.log(this.state.showModal));
+        }
+    }
+    showGetFromBankModal(){
+        if(this.state.showGetFromBankModal){
+            this.setState({showGetFromBankModal : false}, console.log(this.state.showGetFromBankModal));
+        }else{
+            this.setState({showGetFromBankModal : true}, console.log(this.state.showGetFromBankModal));
+        }
+    }
+
+    showSendToBankModal(){
+        if(this.state.showSendToBankModal){
+            this.setState({showSendToBankModal : false}, console.log(this.state.showSendToBankModal));
+        }else{
+            this.setState({showSendToBankModal : true}, console.log(this.state.showSendToBankModal));
         }
     }
     
@@ -111,13 +130,13 @@ class Game extends React.Component{
                         <Nav className="mr-auto">
                         <Nav.Link href="help">Help</Nav.Link>
                         <Nav.Link>
-                            <Button variant="outline-secondary" size="sm">
-                                <img src="central_bank_euro.png" width="25px" height="25px" alt="Send"></img> Send
+                            <Button variant="outline-secondary"  onClick= {this.showSendToBankModal}>
+                                 Send to Bank
                             </Button>
                         </Nav.Link>
                         <Nav.Link>
-                            <Button variant="outline-secondary" size="sm">
-                                <img src="central_bank_euro.png" width="25px" height="25px" alt="Get"></img> Get
+                            <Button variant="outline-secondary"  onClick= {this.showGetFromBankModal}>
+                                 Get from Bank
                             </Button>
                         </Nav.Link>
                         </Nav>
@@ -142,7 +161,9 @@ class Game extends React.Component{
                         <UserList onClick= {this.showModal}></UserList>
                     </div>
                 </div>
-            </div>    
+            </div>
+            <GetMoneyFromBankModal showModal={this.state.showGetFromBankModal}></GetMoneyFromBankModal>
+            <SendMoneyToBankModal showModal={this.state.showSendToBankModal}></SendMoneyToBankModal>        
         </div>
     );    
   }

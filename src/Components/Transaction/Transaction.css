@@ -13,6 +13,12 @@
     grid-row-end: 3;
 }
 
+.transactionBankImage{
+    background-color: rgb(119, 0, 140);
+    grid-row-start: 1;
+    grid-row-end: 3;
+}
+
 .transactionHeader{
     margin-left: 0.5%;
     display: grid;
