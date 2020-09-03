@@ -1,0 +1,15 @@
+.mainUser{
+    position: relative;
+}
+
+#getFromBankButton{
+    position: absolute;
+    top : -25%;
+    left: 70%;
+}
+
+#sendToBankButton{
+    position: absolute;
+    bottom : -25%;
+    left: 70%;
+}

@@ -43,9 +43,9 @@ class Home extends React.Component{
     }
     showCreateGameModal(){
         if(this.state.showCreateGameModal){
-            this.setState({showCreateGameModal : false}, console.log(this.state.showCreateGameModal));
+            this.setState({showCreateGameModal : false});
         }else{
-            this.setState({showCreateGameModal : true}, console.log(this.state.showCreateGameModal));
+            this.setState({showCreateGameModal : true});
         }
     }
     showJoinGameModal(){
@@ -67,7 +67,6 @@ class Home extends React.Component{
         .then((data) => {
             if(data[0].password !== this.state.gamePassword)
             {
-                console.log("wrong password");
                 // ovdi ogromna greska... upises id vrati se citav objekt ! na temelju samo id-a vrati i id i sifru
             }else {
                 sessionStorage.setItem("gameId", data[0]._id);
@@ -98,14 +97,16 @@ class Home extends React.Component{
         if(sessionStorage.getItem("userData"))
         {
             this.findGame();
-        }
-    }
-    componentWillMount(){
-        if(sessionStorage.getItem("userData")){
         }else {
-            this.setState({redirect: true});
+        this.setState({redirect: true});
         }
     }
+    // componentWillMount(){
+    //     if(sessionStorage.getItem("userData")){
+    //     }else {
+    //         this.setState({redirect: true});
+    //     }
+    // }
     render(){
         if(this.state.redirect){
             return(<Redirect to="./login"/>);
@@ -131,32 +132,33 @@ class Home extends React.Component{
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>
+                <img id="monopolbankImage"src="eurocoin_11.png" alt="MonopolBank"></img>
                  <Container>
                     <Row>
                         <Col>
                             <Jumbotron id="AppJumbotron">
-                                <p> 
-                                    <h3>Create a new game or join an existing game</h3>
-                                </p>
+                                    <h4>Create a new game or join an existing game</h4>
                             </Jumbotron>
                         </Col>
                     </Row>
                 </Container>
-                <Container className="HomeForm">
-                    <Row>
-                        <Col>
-                        <CreateGameModal showModal={this.state.showCreateGameModal} handleRedirect={this.handleRedirect}></CreateGameModal>
-                        <JoinGameModal showModal={this.state.showJoinGameModal} handleRedirect={this.handleRedirect}></JoinGameModal>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col>
-                            <Button variant="outline-success" onClick= {this.showCreateGameModal}>Create Game</Button>
-                        </Col>
-                        <Col>
-                            <Button variant="outline-primary" onClick = {this.showJoinGameModal}>Join Game</Button>
-                        </Col>
-                    </Row>
+                <Container>
+                    <div className="HomeForm">
+                        <Row>
+                            <Col>
+                            <CreateGameModal show={this.state.showCreateGameModal} handleRedirect={this.handleRedirect} onHide={ () => this.setState({showCreateGameModal : false})}></CreateGameModal>
+                            <JoinGameModal show={this.state.showJoinGameModal} handleRedirect={this.handleRedirect} onHide={ () => this.setState({showJoinGameModal : false})}></JoinGameModal>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col>
+                                <Button variant="outline-success" onClick= {this.showCreateGameModal}>Create Game</Button>
+                            </Col>
+                            <Col>
+                                <Button variant="outline-primary" onClick = {this.showJoinGameModal}>Join Game</Button>
+                            </Col>
+                        </Row>
+                    </div>
                 </Container>
             </div>
         );

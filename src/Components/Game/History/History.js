@@ -1,15 +1,14 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
 
-import {Socket} from '../../Services/Socket'; 
+import {Socket} from '../../../Services/Socket'; 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
-import Message from '../Message/Message';
-import Transaction from '../Transaction/Transaction';
-import './Chat.css';
+import Message from './Message/Message';
+import Transaction from './Transaction/Transaction';
 
-const Chat = () => {
+const History = () => {
 
     var username = sessionStorage.getItem("userData").split(',')[1]; 
     var game = sessionStorage.getItem("game");
@@ -17,7 +16,6 @@ const Chat = () => {
     if(game){
         game = game.split(',')[1];  
     } 
-    const [connected, setConnected] = useState(false);
     const [welcomeMessage, setWelcomeMessage] = useState("");
     const [gameMessages, setGameMessages] = useState([]);
     const [usersInGame, setUsersInGame] = useState([]);
@@ -29,12 +27,10 @@ const Chat = () => {
 
         Socket.on("welcomeMessage", (message) => {
             setWelcomeMessage(message);
-            setConnected(true)
         });
 
-        Socket.on("message", (message) => {
-            console.log(message);
-        });
+        return () => {
+        }
     }, []);
 
     useEffect(() => {
@@ -70,7 +66,7 @@ const Chat = () => {
 
     return(
     <div>
-        <Container id="gameChat">
+        <Container>
             <Row>
                 <Col>
                     <Message message={welcomeMessage}></Message>
@@ -95,4 +91,4 @@ const Chat = () => {
     );
 
 }
-export default Chat;
+export default History;

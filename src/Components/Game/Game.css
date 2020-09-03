@@ -20,11 +20,11 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 0.2fr 1fr;
-    grid-template-areas: "userListDiv " " chatDiv ";
+    grid-template-areas: "userListDiv " " historyDiv ";
 }
 
-#chatDiv{
-    grid-area: chatDiv;
+#historyDiv{
+    grid-area: historyDiv;
     
     display: flex;
     flex-direction: column-reverse;
@@ -41,7 +41,7 @@
 
 @media (max-width : 440px) {
     
-    #chatDiv{
+    #historyDiv{
         height: 55vh;
     }
 

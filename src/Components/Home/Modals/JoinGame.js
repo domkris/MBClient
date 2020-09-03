@@ -1,5 +1,5 @@
 import React from 'react';
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 import {ServerUrl} from '../../../Services/ServerUrl';
 
 import Modal from 'react-bootstrap/Modal';
@@ -9,12 +9,10 @@ import Form from 'react-bootstrap/Form';
 const JoinGame = (props) => {
     const [gameName, setGameName] = useState("");
     const [gamePassword, setGamePassword] = useState("");
-    const [showJoinGameModal, setShowJoinGameModal] = useState(false);
     const [showErrorName, setShowErrorName] = useState(false);
     const [showErrorPassword, setShowErrorPassword] = useState(false);
 
     const handleJoinGameModalClose = () => {
-        setShowJoinGameModal(false);
         setShowErrorName(false);
         setShowErrorPassword(false);
     }
@@ -42,7 +40,6 @@ const JoinGame = (props) => {
             })
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
                 if(!data.success)
                 {
                     alert("wrong game name or password");
@@ -50,7 +47,6 @@ const JoinGame = (props) => {
                 }else {
                     sessionStorage.setItem("game", data.gameData[0]._id + "," + data.gameData[0].name + "," + data.gameData[0].amount);
                     handleJoinGameModalClose();
-                    props.handleRedirect(true);
                 }
             });   
         }else{
@@ -63,20 +59,17 @@ const JoinGame = (props) => {
         }
 
     }
-    useEffect(() => {
-        setShowJoinGameModal(props.showModal)
-      },[props.showModal]);
 
       return(
         <div>
-            <Modal show={showJoinGameModal} onHide={handleJoinGameModalClose}>
+            <Modal {...props}>
                 <Modal.Header closeButton>
                 </Modal.Header>
                 <Modal.Body>
                     <Form>
                         <Form.Group controlId="formGameName">
                             <Form.Label>Game name</Form.Label>
-                            <Form.Control required name="gameName" type="text" placeholder="Game name.." onChange={change}/>
+                            <Form.Control required name="gameName" type="text" placeholder="Game name.." onChange={change} autoComplete="off"/>
                             {showErrorName ? 
                             <div style={{color: "red"}}>
                                 Game name is required
@@ -84,7 +77,7 @@ const JoinGame = (props) => {
                         </Form.Group>
                         <Form.Group controlId="formGamePassword">
                             <Form.Label>Password</Form.Label>
-                            <Form.Control name="gamePassword" type="password" placeholder="Password" onChange={change}/>
+                            <Form.Control name="gamePassword" type="password" placeholder="Password" onChange={change} autoComplete="off"/>
                             {showErrorPassword ? 
                             <div style={{color: "red"}}>
                                 Password is required
@@ -93,7 +86,7 @@ const JoinGame = (props) => {
                     </Form>  
                 </Modal.Body>
                 <Modal.Footer>
-                <Button variant="outline-dark" onClick={handleJoinGameModalClose}>
+                <Button variant="outline-dark" onClick={props.onHide}>
                     Close
                 </Button>
                 <Button variant="outline-primary" onClick={joinGame}>

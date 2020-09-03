@@ -1,4 +1,4 @@
-.mainUser{
+.main{
     display: grid;
     grid-template-columns: 80px;
     grid-gap: 19%;

@@ -1,5 +1,5 @@
 import React from 'react';
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 import {ServerUrl} from '../../../Services/ServerUrl';
 
 import Modal from 'react-bootstrap/Modal';
@@ -13,13 +13,11 @@ const CreateGame = (props) => {
     const [gameName, setGameName] = useState("");
     const [gamePassword, setGamePassword] = useState("");
     const [gameAmount, setGameAmount] = useState(0);
-    const [showCreateGameModal, setShowCreateGameModal] = useState(false);
     const [showErrorName, setShowErrorName] = useState(false);
     const [showErrorPassword, setShowErrorPassword] = useState(false);
     const [showErrorAmount, setShowErrorAmount] = useState(false);
 
     const handleCreateGameModalClose = () => {
-        setShowCreateGameModal(false);
         setShowErrorName(false);
         setShowErrorPassword(false);
         setShowErrorAmount(false);
@@ -39,7 +37,6 @@ const CreateGame = (props) => {
                 if(data.success){
                     sessionStorage.setItem("game", data.gameData._id + "," + data.gameData.name + "," + data.gameData.amount);
                     handleCreateGameModalClose();
-                    props.handleRedirect(true);
                 }else{
                     setErrorMessage(data.message);
                 }
@@ -71,20 +68,17 @@ const CreateGame = (props) => {
             setShowErrorAmount(false);
         }
     }
-    useEffect(() => {
-        setShowCreateGameModal(props.showModal)
-      },[props.showModal]);
 
     return(
     <div>
-        <Modal className="modalCreateGame"show={showCreateGameModal} onHide={handleCreateGameModalClose}>
+        <Modal className="modalCreateGame" {...props}>
             <Modal.Header closeButton>
             </Modal.Header>
             <Modal.Body>
-                <Form>
+                <Form autoComplete="off">
                     <Form.Group controlId="formGameName">
                         <Form.Label>Game name</Form.Label>
-                        <Form.Control required name="gameName" type="text" placeholder="Game name.." onChange={change}/>
+                        <Form.Control required name="gameName" type="text" placeholder="Game name.." onChange={change} autoComplete="off"/>
                         {showErrorName ? 
                             <div style={{color: "red"}}>
                                 Game name is required
@@ -92,7 +86,7 @@ const CreateGame = (props) => {
                     </Form.Group>
                     <Form.Group controlId="formGamePassword">
                         <Form.Label>Password</Form.Label>
-                        <Form.Control name="gamePassword" type="password" placeholder="Password"onChange={change}/>
+                        <Form.Control name="gamePassword" type="password" placeholder="Password"onChange={change} autoComplete="off"/>
                         {showErrorPassword ? 
                             <div style={{color: "red"}}>
                                 Password is required
@@ -100,7 +94,7 @@ const CreateGame = (props) => {
                     </Form.Group>
                     <Form.Group controlId="formGameAmmount">
                         <Form.Label>Starting amount</Form.Label>
-                        <Form.Control required name="gameAmount" type="text" pattern="[0-9]*" placeholder="Amount"onChange={change}/>
+                        <Form.Control required name="gameAmount" type="text" pattern="[0-9]*" placeholder="Amount"onChange={change} autoComplete="off"/>
                         {showErrorAmount ? 
                             <div style={{color: "red"}}>
                                 Game amount is required
@@ -114,7 +108,7 @@ const CreateGame = (props) => {
                 }  
             </Modal.Body>
             <Modal.Footer>
-            <Button variant="outline-dark" onClick={handleCreateGameModalClose}>
+            <Button variant="outline-dark" onClick={props.onHide}>
                 Close
             </Button>
             <Button variant="outline-primary" onClick={createGame}>

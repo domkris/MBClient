@@ -22,5 +22,3 @@ const Message = (props) => {
 }
 
 export default Message;
-
-// sent {text}<img src="https://image.flaticon.com/icons/svg/138/138281.svg"/> to {usertoSent}

@@ -1,9 +1,9 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
-import {Socket} from '../../../Services/Socket'
+import {Socket} from '../../../../Services/Socket'
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-import './Money.css';
+import './Style/Money.css';
 
 const SendMoneyModal = (props) => {
     
@@ -29,9 +29,7 @@ const SendMoneyModal = (props) => {
             }
         }else {
             setAmount((state) => [...state, input])
-            //amount += input;         
         }
-        console.log(amount);
         e.preventDefault();
         e.stopPropagation();
     };
@@ -45,7 +43,7 @@ const SendMoneyModal = (props) => {
                 <Modal.Header closeButton>&#8364; <strong>{amount}</strong>
                 </Modal.Header>
                 <Modal.Body>
-                   <div className="main">
+                   <div className="mainCalc">
                        <Button variant="outline-info" onClick={(e) => {changeAmount(e, "1")}}>1</Button>
                        <Button variant="outline-info" onClick={(e) => {changeAmount(e, "2")}}>2</Button>
                        <Button variant="outline-info" onClick={(e) => {changeAmount(e, "3")}}>3</Button>

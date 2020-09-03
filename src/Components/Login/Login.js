@@ -31,7 +31,6 @@ class Login extends React.Component{
     }
 
     login(){
-        console.log(ServerUrl);
         if(this.state.username && this.state.password){
             var data = { username: this.state.username, password : this.state.password };
             fetch(ServerUrl + '/users/login', {
@@ -43,7 +42,6 @@ class Login extends React.Component{
               })
               .then(response => response.json())
               .then(data => {
-                console.log('Success:', data);
                 if(data.success){
                     sessionStorage.setItem('userData', data.userData._id + "," + data.userData.username);
                     this.setState({redirect : true});
@@ -71,7 +69,6 @@ class Login extends React.Component{
               })
               .then(response => response.json())
               .then(data => {
-                console.log('Success:', data);
                 if(data.success){
                      sessionStorage.setItem('userData', data.userData._id + "," + data.userData.username);
                      this.setState({redirect : true});
@@ -82,7 +79,7 @@ class Login extends React.Component{
                 }
               })
               .catch((error) => {
-                console.error('Error:', error);
+                //console.error('Error:', error);
               });
     }
     change(e){
@@ -133,15 +130,15 @@ class Login extends React.Component{
                 </Navbar.Collapse>
             </Navbar>
             <img id="monopolbankImage"src="eurocoin_11.png" alt="MonopolBank"></img>
-            <Container className="LoginForm">
+            <Container>
                <Row>
                    <Col>
-                        <Form onSubmit={this.submit}>
+                        <Form onSubmit={this.submit} className="LoginForm">
                             <Row>
                                 <Col>
                                     <Form.Group controlId="formBasicUsername">
                                         <Form.Label>Username</Form.Label>
-                                        <Form.Control required name="username" minLength="4" maxLength="20" placeholder="Enter username" onChange= {this.change}/>
+                                        <Form.Control required name="username" minLength="4" maxLength="20" placeholder="Enter username" onChange= {this.change} autoComplete="off"/>
                                     </Form.Group>
                                 </Col>
                             </Row>
@@ -149,7 +146,7 @@ class Login extends React.Component{
                                 <Col>
                                     <Form.Group required controlId="formBasicPassword">
                                         <Form.Label>Password</Form.Label>
-                                        <Form.Control required name="password" minLength="4" maxLength="25" type="password" placeholder="Password" onChange= {this.change}/>
+                                        <Form.Control required name="password" minLength="4" maxLength="25" type="password" placeholder="Password" onChange= {this.change} autoComplete="off"/>
                                     </Form.Group>
                                 </Col>
                             </Row>

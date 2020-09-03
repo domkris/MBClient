@@ -1,13 +1,13 @@
 import React from 'react';
-import './User.css';
+import './OtherUser.css';
 import Button from 'react-bootstrap/Button';
 
-const User = (props) => {
+const OtherUser = (props) => {
     var userCurrent = sessionStorage.getItem("userData").split(',')[1];
     var username = props.user.username;
     var amount = props.user.amount;
     return(
-        <div className="mainUser">
+        <div className="main">
             { username !== userCurrent ? 
                 <Button variant="outline-dark">
                     <div className="playerName"><strong>{username}</strong></div>
@@ -21,4 +21,4 @@ const User = (props) => {
         </div>
     );
 }
-export default User;
+export default OtherUser;

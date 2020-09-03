@@ -1,25 +1,24 @@
 import React from 'react';
-import {useState, useEffect} from 'react';
-import {Socket} from '../../../Services/Socket'
+import {useState} from 'react';
+import {Socket} from '../../../../Services/Socket'
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-import './Money.css';
+import './Style/Money.css';
 
-const GetFromBank = (props) => {
-    
+const BankTransactionModal = (props) => {
     
     var username = sessionStorage.getItem("userData").split(',')[1];
-    const [showModal, setShowModal] = useState(false);
     const [amount, setAmount] = useState([]);
 
-    const handleModalClose = () => {
-        setAmount([]);
-        setShowModal(false);
-    };
 
-    var makeTransaction = (e) =>{
+    var makeFromBankTransaction = (e) =>{
         var money = amount.join('');
         Socket.emit("fromBankTransaction", {username: username, amountArray: money});
+        setAmount([]);
+    }
+    var makeToBankTransaction = (e) =>{
+        var money = amount.join('');
+        Socket.emit("toBankTransaction", {username: username, amountArray: money});
         setAmount([]);
     }
     var changeAmount = (e, input) => {
@@ -28,24 +27,18 @@ const GetFromBank = (props) => {
                 setAmount(amount.slice(0,-1));
             }
         }else {
-            setAmount((state) => [...state, input])
-            //amount += input;         
+            setAmount((state) => [...state, input])  
         }
-        console.log(amount);
         e.preventDefault();
         e.stopPropagation();
     };
-    useEffect(() => {
-        setShowModal(props.showModal)
-      },[props.showModal]);
-
     return(
         <div>
-            <Modal className="modalGetFromBank"show={showModal} onHide={handleModalClose}>
+            <Modal className="modalGetFromBank" {...props}>
                 <Modal.Header closeButton>&#8364; <strong>{amount}</strong>
                 </Modal.Header>
                 <Modal.Body>
-                   <div className="main">
+                   <div className="mainCalc">
                        <Button variant="outline-info" onClick={(e) => {changeAmount(e, "1")}}>1</Button>
                        <Button variant="outline-info" onClick={(e) => {changeAmount(e, "2")}}>2</Button>
                        <Button variant="outline-info" onClick={(e) => {changeAmount(e, "3")}}>3</Button>
@@ -61,15 +54,22 @@ const GetFromBank = (props) => {
                    </div>
                 </Modal.Body>
                 <Modal.Footer>
-                <Button variant="outline-danger" onClick={handleModalClose}>
+                <Button variant="outline-danger" onClick={props.onHide}>
                     Close
                 </Button>
                 <Button variant="outline-success" onClick={(e)=> {
-                    makeTransaction(e); 
-                    handleModalClose();
+                    makeFromBankTransaction(e); 
+                    props.onHide();
                     }
                 }>
-                    Get
+                    Get from Bank
+                </Button>
+                <Button variant="outline-success" onClick={(e)=> {
+                    makeToBankTransaction(e); 
+                    props.onHide();
+                    }
+                }>
+                    Send to Bank
                 </Button>
                 </Modal.Footer>
             </Modal>
@@ -77,4 +77,4 @@ const GetFromBank = (props) => {
     );
 }
 
-export default GetFromBank;
+export default BankTransactionModal;
