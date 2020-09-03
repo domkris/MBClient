@@ -1,5 +1,5 @@
 import React from 'react';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import {ServerUrl} from '../../../Services/ServerUrl';
 
 import Modal from 'react-bootstrap/Modal';
@@ -47,6 +47,7 @@ const JoinGame = (props) => {
                 }else {
                     sessionStorage.setItem("game", data.gameData[0]._id + "," + data.gameData[0].name + "," + data.gameData[0].amount);
                     handleJoinGameModalClose();
+                    props.handleRedirect(true);
                 }
             });   
         }else{

@@ -37,6 +37,7 @@ const CreateGame = (props) => {
                 if(data.success){
                     sessionStorage.setItem("game", data.gameData._id + "," + data.gameData.name + "," + data.gameData.amount);
                     handleCreateGameModalClose();
+                    props.handleRedirect(true);
                 }else{
                     setErrorMessage(data.message);
                 }
