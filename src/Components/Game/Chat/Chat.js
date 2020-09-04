@@ -12,6 +12,7 @@ const Chat = () => {
 
     var sendChatMessage = (e) =>{
         Socket.emit("chat", {username: username, text: chatMessage});
+        setChatMessage("");
     }
 
     var change = e => {
@@ -22,7 +23,7 @@ const Chat = () => {
         <div>
             <Form className="chatDiv">
                 <Form.Group controlId="formBasicChat" id="formChat">
-                    <Form.Control type="text" placeholder="Type to chat.." minLength="1" maxLength="100" autoComplete="off" onChange= {change}/>
+                    <Form.Control type="text" placeholder="Type to chat.." minLength="1" maxLength="100" autoComplete="off" onChange= {change} value={chatMessage}/>
                 </Form.Group>
                 <Button variant="outline-secondary" id="buttonChat" onClick={(e) => sendChatMessage(e)}>
                     Send
