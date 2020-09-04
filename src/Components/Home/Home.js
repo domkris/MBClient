@@ -25,7 +25,8 @@ class Home extends React.Component{
             gamePassword: '',
             foundGames: [],
             showCreateGameModal: false,
-            showJoinGameModal: false
+            showJoinGameModal: false,
+            createGamesDisabled: false
         }
         
         this.logout = this.logout.bind(this);
@@ -84,9 +85,10 @@ class Home extends React.Component{
         // remove from DOM
         this.setState( state => {
             state.foundGames = newList;
+            this.setState({createGamesDisabled : false})
             return state;
         });
-        
+
         alert(`game ${this.state.foundGames[i].name} successfully deleted!`);
     }
     joinGame(){
@@ -111,6 +113,9 @@ class Home extends React.Component{
         .then((data) => {
             if(data.success){
                 this.setState({foundGames : data.games})
+                if(this.state.foundGames.length > 2){
+                    this.setState({createGamesDisabled : true})
+                }
             }
         });
     }
@@ -162,8 +167,8 @@ class Home extends React.Component{
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>
-                <img id="monopolbankImage"src="eurocoin_11.png" alt="MonopolBank"></img>
-                <Container>
+                <p style={{marginTop:"5%"}}>Welcome <strong>{sessionStorage.getItem("userData").split(',')[1]}</strong></p>
+                <Container style={{marginTop:"5%"}}>
                     <div className="HomeForm">
                         <Row>
                             <Col>
@@ -173,7 +178,7 @@ class Home extends React.Component{
                         </Row>
                         <Row>
                             <Col>
-                                <Button variant="outline-success" onClick= {this.showCreateGameModal}>Create Game</Button>
+                                <Button variant="outline-success" onClick= {this.showCreateGameModal} disabled={this.state.createGamesDisabled}>Create Game</Button>
                             </Col>
                             <Col>
                                 <Button variant="outline-primary" onClick = {this.showJoinGameModal}>Join Game</Button>
@@ -190,6 +195,11 @@ class Home extends React.Component{
                                 );
                             })}
                         </div>
+                    }
+                    {this.state.createGamesDisabled ? 
+                        <div style={{color: "red", marginTop:"2%"}} className="HomeForm">
+                            Cannot create more then 3 games!
+                        </div> : null
                     }
                 </Container>
             </div>
