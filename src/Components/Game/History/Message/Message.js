@@ -5,10 +5,13 @@ const Message = (props) => {
     var text = props.message.text;
     var time = props.message.time;
     var type = props.message.type;
+    console.log(props);
 
     return (
         <div className="message">
-            {type === "userStatus" ? <div className="messageImageUserJoined"></div> : <div className="messageImage"></div>}
+            {type === "userStatus" ? <div className="messageImageUserJoined"></div> : null}
+            {type === "message" ? <div className="messageImage"></div> : null}
+            {type === "chat" ? <div className="messageChat"></div> : null}
             <div className="messageHeader">
                 <div className="messageTitle">{userCurrent}</div>
                 <div className="messageTime">{time}</div>
