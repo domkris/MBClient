@@ -5,7 +5,6 @@ const Message = (props) => {
     var text = props.message.text;
     var time = props.message.time;
     var type = props.message.type;
-    console.log(props);
 
     return (
         <div className="message">
