@@ -15,6 +15,10 @@
     grid-row-start: 1;
     grid-row-end: 3;
 }
+.messageChat{
+    grid-row-start: 1;
+    grid-row-end: 3;
+}
 
 .messageHeader{
     margin-left: 0.5%;

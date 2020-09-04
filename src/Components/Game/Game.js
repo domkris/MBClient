@@ -4,6 +4,7 @@ import {Socket} from '../../Services/Socket';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import History from './History/History';
+import Chat from './Chat/Chat';
 import UserList from './UserList/UserList';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Game.css';
@@ -125,6 +126,9 @@ class Game extends React.Component{
                     </div>
                     <div id="userListDiv">
                         <UserList onClick= {this.showModal}></UserList>
+                    </div>
+                    <div>
+                        <Chat></Chat>
                     </div>
                 </div>
             </div>     

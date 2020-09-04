@@ -64,6 +64,12 @@ const History = () => {
         }); 
     },[gameMessages]);
 
+    useEffect(() => {
+        Socket.on("chat", (newChatMessage) => {
+            setGameMessages([...gameMessages, newChatMessage]);
+        }); 
+    },[gameMessages]);
+
     return(
     <div>
         <Container>
@@ -81,7 +87,9 @@ const History = () => {
                             return(<Transaction key={i} message={gameMessage}></Transaction>);
                         }else if(gameMessage.type === "fromBankTransaction"){
                             return(<Transaction key={i} message={gameMessage}></Transaction>);
-                        }
+                        }else if(gameMessage.type === "chat"){
+                            return(<Message key={i} message={gameMessage}></Message>);
+                        }        
                     }
                     )}
                 </Col>
