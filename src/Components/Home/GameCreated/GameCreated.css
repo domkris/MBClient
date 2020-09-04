@@ -1,0 +1,25 @@
+.gameCreated{
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: 1fr;
+    margin-bottom: 2%;
+    margin-top: 2%;
+    
+}
+
+.gameCreatedHeader{
+    display: grid;
+}
+
+
+@media (max-width : 440px) {
+
+    .gameCreated{
+        display: grid;
+        grid-template-columns: 3fr 2fr;
+        grid-template-rows: 1fr;
+        margin-bottom: 2%;
+        margin-top: 2%;
+        
+    }
+}

@@ -8,7 +8,7 @@ import Form from 'react-bootstrap/Form';
 
 const CreateGame = (props) => {
 
-    var createdBy = sessionStorage.getItem("userData").split(',')[0];
+    var createdBy = sessionStorage.getItem("userData").split(',')[1];
     const [errorMessage, setErrorMessage] = useState("");
     const [gameName, setGameName] = useState("");
     const [gamePassword, setGamePassword] = useState("");

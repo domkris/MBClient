@@ -7,7 +7,7 @@ import Nav from 'react-bootstrap/Nav';
 import Col from 'react-bootstrap/Col';
 import CreateGameModal from '../Home/Modals/CreateGame';
 import JoinGameModal from '../Home/Modals/JoinGame';
-import Jumbotron from 'react-bootstrap/Jumbotron';
+import GameCreated from '../Home/GameCreated/GameCreated';
 import {Redirect} from 'react-router-dom';
 import {ServerUrl} from '../../Services/ServerUrl';
 import './Home.css';
@@ -23,13 +23,14 @@ class Home extends React.Component{
             redirectToGame: false,
             gameId: '',
             gamePassword: '',
-            foundGame: '',
+            foundGames: [],
             showCreateGameModal: false,
             showJoinGameModal: false
         }
         
         this.logout = this.logout.bind(this);
         this.joinGame = this.joinGame.bind(this);
+        this.deleteGame = this.deleteGame.bind(this);
         this.change = this.change.bind(this);
         this.findGame = this.findGame.bind(this);
         this.showButtons = this.showButtons.bind(this);
@@ -60,6 +61,34 @@ class Home extends React.Component{
             return true;
         }
     }
+    deleteGame(i){
+
+        var gameToDeleteId = this.state.foundGames[i]._id;
+
+        var url = ServerUrl + `/games/${gameToDeleteId}`;
+        fetch(url, {
+            method: 'DELETE',
+            headers: {
+              'Content-Type': 'application/json',
+            }
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data);
+        }).catch( err => { console.error('error', err);}); 
+
+        let newList = this.state.foundGames.filter((game)=>{
+            return gameToDeleteId !== game._id;
+        });
+
+        // remove from DOM
+        this.setState( state => {
+            state.foundGames = newList;
+            return state;
+        });
+        
+        alert(`game ${this.state.foundGames[i].name} successfully deleted!`);
+    }
     joinGame(){
         var apiUrl = ServerUrl + "/games/" + this.state.gameId;
         fetch(apiUrl)
@@ -76,12 +105,13 @@ class Home extends React.Component{
 
     }
     findGame(){
-        var apiUrl = ServerUrl + "/games/" + sessionStorage.getItem("userData").split(',')[0];
+        var apiUrl = ServerUrl + "/games/" + sessionStorage.getItem("userData").split(',')[1];
         fetch(apiUrl)
         .then((response) => response.json())
         .then((data) => {
-            this.setState({foundGame : data})
-            console.log(this.state);
+            if(data.success){
+                this.setState({foundGames : data.games})
+            }
         });
     }
 
@@ -133,15 +163,6 @@ class Home extends React.Component{
                     </Navbar.Collapse>
                 </Navbar>
                 <img id="monopolbankImage"src="eurocoin_11.png" alt="MonopolBank"></img>
-                 <Container>
-                    <Row>
-                        <Col>
-                            <Jumbotron id="AppJumbotron">
-                                    <h4>Create a new game or join an existing game</h4>
-                            </Jumbotron>
-                        </Col>
-                    </Row>
-                </Container>
                 <Container>
                     <div className="HomeForm">
                         <Row>
@@ -159,6 +180,17 @@ class Home extends React.Component{
                             </Col>
                         </Row>
                     </div>
+                    <br/>
+                    {this.state.foundGames.length === 0 ? null :
+                        <div className="HomeForm">
+                            Games created: {this.state.foundGames.length}
+                            {this.state.foundGames.map((game,i)=>{
+                                return(
+                                    <GameCreated game={game} key={game._id} foundGames={this.state.foundGames} deleteGame={() => this.deleteGame(i)}></GameCreated>
+                                );
+                            })}
+                        </div>
+                    }
                 </Container>
             </div>
         );
