@@ -124,9 +124,6 @@ class Login extends React.Component{
                 <Navbar.Brand href="login"><img src="eurocoin_64px.png" alt=""></img>MBank</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="mr-auto">
-                    <Nav.Link href="help">Help</Nav.Link>
-                    </Nav>
                 </Navbar.Collapse>
             </Navbar>
             <img id="monopolbankImage"src="eurocoin_11.png" alt="MonopolBank"></img>
@@ -152,7 +149,7 @@ class Login extends React.Component{
                             </Row>
                             <Row>
                                 <Col>
-                                    <Button variant="outline-primary"  onClick= {() => this.setState({loginUser : true})} type="submit">Login</Button>
+                                    <Button style={{marginRight:"2%"}}variant="outline-primary"  onClick= {() => this.setState({loginUser : true})} type="submit">Login</Button>
                                     <Button variant="outline-success"  onClick= {() => this.setState({loginUser : false})} type="submit">SignUp</Button>
                                 </Col>
                             </Row>

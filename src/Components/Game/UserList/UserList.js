@@ -19,12 +19,20 @@ const UserList = () => {
         Socket.on("usersInGame", (data) => {
             setUsersInGame(data.users);
         });
+    
+        return () => {
+            //Socket.off("usersInGame");
+        }
     },[usersInGame]);
 
     useEffect(()=>{
         Socket.on("usersAfterTransaction", (data) => {
             setUsersInGame(data.users);
         });
+        
+        return () => {
+            Socket.off("usersAfterTransaction");
+        }
     }, []);
 
     var changeShowModal = (i) => {

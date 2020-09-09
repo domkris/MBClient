@@ -1,15 +1,12 @@
 import React from 'react';
 import './GameCreated.css';
 import Button from 'react-bootstrap/Button';
-import {ServerUrl} from '../../../Services/ServerUrl';
-import {useState, useEffect} from 'react';
 
 const GameCreated = (props) => {
 
     var name = props.game.name;
     var time = props.game.timeCreated;
     
-    const [foundGames, setFoundGames] = useState([{}]);
 
 
     var handleDelete = () => {

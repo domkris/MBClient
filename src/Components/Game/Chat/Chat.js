@@ -17,7 +17,6 @@ const Chat = () => {
 
     var change = e => {
         setChatMessage(e.target.value);
-        console.log(e.target.value);
     }
     return (
         <div>

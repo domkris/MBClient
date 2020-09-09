@@ -7,6 +7,7 @@ import Nav from 'react-bootstrap/Nav';
 import Col from 'react-bootstrap/Col';
 import CreateGameModal from '../Home/Modals/CreateGame';
 import JoinGameModal from '../Home/Modals/JoinGame';
+import DeleteAccount from '../Global/Modals/DeleteAccount';
 import GameCreated from '../Home/GameCreated/GameCreated';
 import {Redirect} from 'react-router-dom';
 import {ServerUrl} from '../../Services/ServerUrl';
@@ -26,7 +27,8 @@ class Home extends React.Component{
             foundGames: [],
             showCreateGameModal: false,
             showJoinGameModal: false,
-            createGamesDisabled: false
+            createGamesDisabled: false,
+            showDeleteAccountModal : false
         }
         
         this.logout = this.logout.bind(this);
@@ -37,11 +39,19 @@ class Home extends React.Component{
         this.showButtons = this.showButtons.bind(this);
         this.showCreateGameModal = this.showCreateGameModal.bind(this);
         this.showJoinGameModal = this.showJoinGameModal.bind(this);
+        this.showDeleteAccountModal = this.showDeleteAccountModal.bind(this);
         this.handleRedirect = this.handleRedirect.bind(this);
     }
 
     handleRedirect(value){
         this.setState({redirectToGame : value})
+    }
+    showDeleteAccountModal(){
+        if(this.state.showDeleteAccountModal){
+            this.setState({showDeleteAccountModal : false});
+        }else{
+            this.setState({showDeleteAccountModal : true});
+        }
     }
     showCreateGameModal(){
         if(this.state.showCreateGameModal){
@@ -107,7 +117,7 @@ class Home extends React.Component{
 
     }
     findGame(){
-        var apiUrl = ServerUrl + "/games/" + sessionStorage.getItem("userData").split(',')[1];
+        var apiUrl = ServerUrl + "/games/" + sessionStorage.getItem("userData").split(',')[0];
         fetch(apiUrl)
         .then((response) => response.json())
         .then((data) => {
@@ -133,7 +143,7 @@ class Home extends React.Component{
         {
             this.findGame();
         }else {
-        this.setState({redirect: true});
+            this.setState({redirect: true});
         }
     }
     // componentWillMount(){
@@ -149,7 +159,12 @@ class Home extends React.Component{
         if(this.state.redirectToGame){
             return(<Redirect to="./game"/>);
         }
-        var username = sessionStorage.getItem("userData").split(',')[1]
+        var username = sessionStorage.getItem("userData");
+        if(username){
+            username = username.split(',')[1];
+        }else{
+            return(<Redirect to="./login"/>);
+        }
         return(
             <div>
                 <Navbar bg="light" expand="lg">
@@ -157,10 +172,9 @@ class Home extends React.Component{
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mr-auto">
-                        <Nav.Link href="help">Help</Nav.Link>
                         </Nav>
                         <Nav>
-                            <Nav.Link >
+                            <Nav.Link onClick= {this.showDeleteAccountModal}>
                                 Player <strong>{username}</strong>
                             </Nav.Link>
                             <Nav.Link href="" onClick={this.logout}>Logout</Nav.Link>
@@ -174,6 +188,7 @@ class Home extends React.Component{
                             <Col>
                             <CreateGameModal show={this.state.showCreateGameModal} handleRedirect={this.handleRedirect} onHide={ () => this.setState({showCreateGameModal : false})}></CreateGameModal>
                             <JoinGameModal show={this.state.showJoinGameModal} handleRedirect={this.handleRedirect} onHide={ () => this.setState({showJoinGameModal : false})}></JoinGameModal>
+                            <DeleteAccount show={this.state.showDeleteAccountModal} handleRedirect={this.handleRedirect} onHide={ () => this.setState({showDeleteAccountModal : false})}></DeleteAccount>
                             </Col>
                         </Row>
                         <Row>
