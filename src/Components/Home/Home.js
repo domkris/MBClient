@@ -169,17 +169,19 @@ class Home extends React.Component{
             <div>
                 <Navbar bg="light" expand="lg">
                     <Navbar.Brand href="login"><img src="eurocoin_64px.png" alt=""></img>MBank</Navbar.Brand>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="mr-auto">
+                    <Nav>
+                        <Nav.Link href="about" onClick={this.logout}>Help</Nav.Link>
+                    </Nav>
+                    <Nav className="mr-auto">
                         </Nav>
-                        <Nav>
-                            <Nav.Link onClick= {this.showDeleteAccountModal}>
-                                Player <strong>{username}</strong>
-                            </Nav.Link>
-                            <Nav.Link href="" onClick={this.logout}>Logout</Nav.Link>
-                        </Nav>
-                    </Navbar.Collapse>
+                    <Nav>
+                        <Nav.Link onClick= {this.showDeleteAccountModal}>
+                            Player <strong>{username}</strong>
+                        </Nav.Link>
+                    </Nav>
+                    <Nav>
+                        <Nav.Link href="" onClick={this.logout}>Logout</Nav.Link>
+                    </Nav>
                 </Navbar>
                 <p style={{marginTop:"5%"}}>Welcome <strong>{sessionStorage.getItem("userData").split(',')[1]}</strong></p>
                 <Container style={{marginTop:"5%"}}>

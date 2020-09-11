@@ -1,0 +1,43 @@
+.aboutContainer{
+    display: grid;
+    grid-template-rows: 45px 50px auto;
+    grid-template-areas: "aboutWelcome" "aboutNavigation" "aboutComponents";
+}
+
+.aboutWelcome{
+    grid-area: aboutWelcome;
+}
+.aboutNavigation{
+    grid-area: aboutNavigation;
+}
+.aboutComponents{
+    grid-area: aboutComponents;
+    align-items: center;
+    display: grid;
+}
+
+.aboutNavigationList{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.aboutNavigationList li{
+    margin-right: 2%;
+}
+.aboutResponsive{
+    display: grid;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+    height: 30%;
+}
+
+@media (max-width : 440px) {
+    
+    .aboutResponsive{
+        width: 74%;
+        height: 50%;
+    }
+
+}

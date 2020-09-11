@@ -122,6 +122,9 @@ class Game extends React.Component{
                     <Navbar.Brand href="login"><img src="eurocoin_64px.png" alt=""></img>MBank</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
+                        <Nav>
+                            <Nav.Link href="about" onClick={this.logout}>Help</Nav.Link>
+                        </Nav>
                         <Nav className="mr-auto">
                         </Nav>
                         <Nav>

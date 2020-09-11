@@ -122,9 +122,9 @@ class Login extends React.Component{
         <div>
             <Navbar bg="light" expand="lg">
                 <Navbar.Brand href="login"><img src="eurocoin_64px.png" alt=""></img>MBank</Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                </Navbar.Collapse>
+                <Nav>
+                    <Nav.Link href="about" onClick={this.logout}>Help</Nav.Link>
+                </Nav>
             </Navbar>
             <img id="monopolbankImage"src="eurocoin_11.png" alt="MonopolBank"></img>
             <Container>
