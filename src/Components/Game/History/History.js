@@ -28,6 +28,8 @@ const History = () => {
         Socket.emit("joinRoom", {username, game, gameAmount});
 
         Socket.on("welcomeMessage", (message) => {
+            var date = new Date();
+            message.time = date.getHours() + ":" + date.getMinutes();
             setWelcomeMessage(message);
         });
         
@@ -47,18 +49,28 @@ const History = () => {
 
     useEffect(()=>{
             Socket.on("chat", (newChatMessage) => {
+                var date = new Date();
+                newChatMessage.time = date.getHours() + ":" + date.getMinutes();
                 setGameMessages([...gameMessages, newChatMessage]);
             });
             Socket.on("fromBankTransaction", (newFromBankTransaction) => {
+                var date = new Date();
+                newFromBankTransaction.time = date.getHours() + ":" + date.getMinutes();
                 setGameMessages([...gameMessages, newFromBankTransaction]);
             });
             Socket.on("toBankTransaction", (newToBankTransaction) => {
+                var date = new Date();
+                newToBankTransaction.time = date.getHours() + ":" + date.getMinutes();
                 setGameMessages([...gameMessages, newToBankTransaction]);
             });
             Socket.on("transaction", (newTransaction) => {
+                var date = new Date();
+                newTransaction.time = date.getHours() + ":" + date.getMinutes();
                 setGameMessages([...gameMessages, newTransaction]);
             });
             Socket.on("gameMessage", (gameMessage) => {
+                var date = new Date();
+                gameMessage.time = date.getHours() + ":" + date.getMinutes();
                 setGameMessages([...gameMessages, gameMessage]);
             });
             handleScroll();

@@ -10,8 +10,7 @@
 @media (max-width : 440px) {
     
     #historyDiv{
-        margin-left: auto;
-        margin-right: auto;
+        margin-left: 5%;
         overflow-y: auto;
         overflow-x: hidden;
         height: 50vh;
