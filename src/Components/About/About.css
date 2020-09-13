@@ -1,6 +1,6 @@
 .aboutContainer{
     display: grid;
-    grid-template-rows: 45px 70px auto;
+    grid-template-rows: 1fr 1fr auto;
     grid-template-areas: "aboutWelcome" "aboutNavigation" "aboutComponents";
 }
 
