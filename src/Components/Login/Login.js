@@ -123,7 +123,7 @@ class Login extends React.Component{
             <Navbar bg="light" expand="lg">
                 <Navbar.Brand href="login"><img src="eurocoin_64px.png" alt=""></img>MBank</Navbar.Brand>
                 <Nav>
-                    <Nav.Link href="about" onClick={this.logout}>Help</Nav.Link>
+                    <Nav.Link href="about">Help</Nav.Link>
                 </Nav>
             </Navbar>
             <img id="monopolbankImage"src="eurocoin_11.png" alt="MonopolBank"></img>
