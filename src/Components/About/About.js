@@ -81,7 +81,7 @@ class About extends React.Component{
                     <h2 style={{textAlign:"center"}}>Welcome to the info page</h2>
                 </div>
                 <div className="aboutNavigation">
-                    <DropdownButton id="dropdown-basic-button" title="Click the category">
+                    <DropdownButton id="dropdown-variants-Info" variant="info" title="Click the category">
                         <Dropdown.Item onClick={this.showCreatingAProfile}>Creating a profile</Dropdown.Item>
                         <Dropdown.Item onClick={this.showCreatingAGame}>Creating a game</Dropdown.Item>
                         <Dropdown.Item onClick={this.showHowToPlay}>How to play</Dropdown.Item>
