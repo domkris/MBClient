@@ -80,7 +80,9 @@ class Game extends React.Component{
     componentDidMount(){
         if(sessionStorage.getItem("game")){
             this.setState({gameName: sessionStorage.getItem("game")});
-            this.setState({username: sessionStorage.getItem("userData").split(",")[1]});
+            if(sessionStorage.getItem("userData")){
+                this.setState({username: sessionStorage.getItem("userData").split(",")[1]});
+            }
         }else {
             this.setState({homeRedirect: true});
         }

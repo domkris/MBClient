@@ -1,6 +1,5 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container';
-import Button from 'react-bootstrap/Button';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Navbar from 'react-bootstrap/Navbar';
@@ -62,10 +61,7 @@ class About extends React.Component{
         this.setState({deletingProfile : true})
         event.preventDefault();
     }
-
-    
-    
-    
+  
     render(){    
         
         return (
@@ -102,18 +98,3 @@ class About extends React.Component{
     }
 }
 export default About;
-/*
-
-<div className="aboutGame">
-                    <img className="aboutResponsive" src="help/game1.PNG" alt=""></img>
-                    <img className="aboutResponsive" src="help/game2.PNG" alt=""></img>
-                    <img className="aboutResponsive" src="help/game3_other_player_joins.PNG" alt=""></img>
-                    <img className="aboutResponsive" src="help/game4_sendMoney_to_otherPlayer.PNG" alt=""></img>
-                    <img className="aboutResponsive" src="help/game5_bankTransactions.PNG" alt=""></img>
-                    <img className="aboutResponsive" src="help/game6_chat_leavingGame.PNG" alt=""></img>
-                </div>
-                <div className="aboutDelete">
-                    <img className="aboutResponsive" src="help/deletePlayer.PNG" alt=""></img>
-                </div>
-
-                */
