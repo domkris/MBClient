@@ -1,0 +1,20 @@
+.HistoryContainer{
+    display: flex;
+    height: 55vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-left: 3%;
+    padding: 1%;
+}
+
+@media (max-width : 440px) {
+    
+    #historyDiv{
+        margin-left: auto;
+        margin-right: auto;
+        overflow-y: auto;
+        overflow-x: hidden;
+        height: 60vh;
+    }
+
+}

@@ -76,9 +76,8 @@ class Game extends React.Component{
         sessionStorage.removeItem("userData");
         this.setState({loginRedirect: true});
     }
-
+    
     componentDidMount(){
-
         if(sessionStorage.getItem("game")){
             this.setState({gameName: sessionStorage.getItem("game")});
             this.setState({username: sessionStorage.getItem("userData").split(",")[1]});
@@ -88,7 +87,8 @@ class Game extends React.Component{
 
         Socket.on("usersInGame", (data) => {
             this.setState({usersInGame: data.users});
-        }); 
+        });
+        
     }
   render(){
     if(!sessionStorage.getItem("userData")){
@@ -141,11 +141,11 @@ class Game extends React.Component{
             </Navbar>
             <div className="GameDiv">
                 <div className="gameMainDispayDiv">
-                    <div id="historyDiv">
-                        <History></History>
-                    </div>
                     <div id="userListDiv">
                         <UserList onClick= {this.showModal}></UserList>
+                    </div>
+                    <div id="historyDiv">
+                        <History></History>
                     </div>
                     <div>
                         <Chat></Chat>

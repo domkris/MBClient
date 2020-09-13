@@ -9,9 +9,10 @@ import Container from 'react-bootstrap/Container';
 import Message from './Message/Message';
 import Transaction from './Transaction/Transaction';
 import { ServerUrl } from '../../../Services/ServerUrl';
-
+import './History.css';
 const History = () => {
 
+    const HistoryContainerRef = React.createRef();
     var username = sessionStorage.getItem("userData").split(',')[1]; 
     var game = sessionStorage.getItem("game");
     var gameAmount = sessionStorage.getItem("game").split(",")[2];
@@ -59,7 +60,8 @@ const History = () => {
             });
             Socket.on("gameMessage", (gameMessage) => {
                 setGameMessages([...gameMessages, gameMessage]);
-            });    
+            });
+            handleScroll();
         
         return () => {
             Socket.off("chat");
@@ -70,9 +72,17 @@ const History = () => {
         }
     },[gameMessages, usersInGame]);
 
+    const handleScroll = () => {
+        const scrollHeight = HistoryContainerRef.current.scrollHeight;
+        const height = HistoryContainerRef.current.clientHeight;
+        const maxScrollTop = scrollHeight - height;
+
+        HistoryContainerRef.current.scrollTop = maxScrollTop > 0 ? maxScrollTop : 0;
+    }
+
     return(
     <div>
-        <Container>
+        <Container className="HistoryContainer" ref={HistoryContainerRef}>
             <Row>
                 <Col>
                     <Message message={welcomeMessage}></Message>

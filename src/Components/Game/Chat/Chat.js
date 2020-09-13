@@ -11,8 +11,14 @@ const Chat = () => {
     const [chatMessage, setChatMessage] = useState("");
 
     var sendChatMessage = (e) =>{
-        Socket.emit("chat", {username: username, text: chatMessage});
+        if(chatMessage){
+            if(chatMessage.trim()){
+                Socket.emit("chat", {username: username, text: chatMessage});
+            }
+            
+        }
         setChatMessage("");
+        e.preventDefault();
     }
 
     var change = e => {
@@ -20,7 +26,7 @@ const Chat = () => {
     }
     return (
         <div>
-            <Form className="chatDiv">
+            <Form className="chatDiv" onSubmit={(e) => {e.preventDefault()}}>  
                 <Form.Group controlId="formBasicChat" id="formChat">
                     <Form.Control type="text" placeholder="Type to chat.." minLength="1" maxLength="100" autoComplete="off" onChange= {change} value={chatMessage}/>
                 </Form.Group>
@@ -33,3 +39,5 @@ const Chat = () => {
 }
 
 export default Chat;
+
+// line 27  added onSubmit to prevendDefault cos of on "Enter" wab page would be refreshed

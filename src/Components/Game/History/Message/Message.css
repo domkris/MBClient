@@ -1,6 +1,6 @@
 .message{
     display: grid;
-    grid-template-columns: 12px 1fr;
+    grid-template-columns: 12px 315px;
     grid-template-rows: 20px 1fr;
     margin-bottom: 2%;
 }
@@ -21,12 +21,12 @@
 }
 
 .messageHeader{
-    margin-left: 0.5%;
+    margin-left: 2%;
     display: grid;
     grid-template-columns: 6fr 1fr;
 }
 .messageBody{
-    margin-left: 0.5%;
+    margin-left: 2%;
 }
 .messageTitle{
     color:rgba(0, 0, 0, 0.387);

@@ -25,26 +25,12 @@
 
 #historyDiv{
     grid-area: historyDiv;
-    
-    display: flex;
-    flex-direction: column-reverse;
-    height: 55vh;
-    overflow: auto;
-    padding: 1%;
 }
 
 #userListDiv{
     grid-area: userListDiv;
     padding: 2%;
     margin-left: 2%;
-}
-
-@media (max-width : 440px) {
-    
-    #historyDiv{
-        height: 60vh;
-    }
-
 }
 
 
