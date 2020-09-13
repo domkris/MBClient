@@ -9,11 +9,13 @@
 }
 .aboutNavigation{
     grid-area: aboutNavigation;
+    margin-top: 5%;
 }
 .aboutComponents{
     grid-area: aboutComponents;
     align-items: center;
     display: grid;
+    justify-content: center;
 }
 
 .aboutNavigationList{
@@ -23,7 +25,6 @@
     align-items: center;
 }
 .aboutNavigationList li{
-    margin-right: 2%;
 }
 .aboutResponsive{
     display: grid;
