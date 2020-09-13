@@ -11,7 +11,7 @@
     grid-area: aboutNavigation;
     display: flex;
     justify-content: center;
-    margin-top: 3%;
+    margin-top: 5%;
     margin-bottom: 2%;
 }
 .aboutComponents{
