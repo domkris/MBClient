@@ -24,7 +24,8 @@
     justify-content: center;
     align-items: center;
 }
-.aboutNavigationList li{
+.aboutNavigationList li Button{
+    margin: 1%;
 }
 .aboutResponsive{
     display: grid;

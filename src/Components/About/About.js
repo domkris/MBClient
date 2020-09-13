@@ -1,5 +1,6 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import AboutLogin from './AboutComponents/AboutLogin';
@@ -79,10 +80,12 @@ class About extends React.Component{
                 </div>
                 <div className="aboutNavigation">
                     <ul className="aboutNavigationList">
-                        <li><a href="" onClick={this.showCreatingAProfile}>Creating a profile</a></li>
-                        <li><a href="" onClick={this.showCreatingAGame}>Creating/Joining a game</a></li>
-                        <li><a href="" onClick={this.showHowToPlay}>How to play</a></li>
-                        <li><a href="" onClick={this.showDeletingProfile}>Deleting profile</a></li>
+                        <li>
+                            <Button variant="outline-info" onClick={this.showCreatingAProfile}>Creating a profile</Button>
+                            <Button variant="outline-info" onClick={this.showCreatingAGame}>New game</Button>
+                            <Button variant="outline-info" onClick={this.showHowToPlay}>How to play</Button>
+                            <Button variant="outline-info" onClick={this.showDeletingProfile}>Deleting profile</Button>
+                        </li>
                     </ul>
                 </div>
                 <div className="aboutComponents" style={{marginTop:"5%"}}>
