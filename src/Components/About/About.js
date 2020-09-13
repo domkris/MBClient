@@ -1,6 +1,8 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import AboutLogin from './AboutComponents/AboutLogin';
@@ -79,14 +81,12 @@ class About extends React.Component{
                     <h2 style={{textAlign:"center"}}>Welcome to the info page</h2>
                 </div>
                 <div className="aboutNavigation">
-                    <ul className="aboutNavigationList">
-                        <li>
-                            <Button variant="outline-info" onClick={this.showCreatingAProfile}>Creating a profile</Button>
-                            <Button variant="outline-info" onClick={this.showCreatingAGame}>New game</Button>
-                            <Button variant="outline-info" onClick={this.showHowToPlay}>How to play</Button>
-                            <Button variant="outline-info" onClick={this.showDeletingProfile}>Deleting profile</Button>
-                        </li>
-                    </ul>
+                    <DropdownButton id="dropdown-basic-button" title="Click the category">
+                        <Dropdown.Item onClick={this.showCreatingAProfile}>Creating a profile</Dropdown.Item>
+                        <Dropdown.Item onClick={this.showCreatingAGame}>Creating a game</Dropdown.Item>
+                        <Dropdown.Item onClick={this.showHowToPlay}>How to play</Dropdown.Item>
+                        <Dropdown.Item onClick={this.showDeletingProfile}>How to delete profile</Dropdown.Item>
+                    </DropdownButton>
                 </div>
                 <div className="aboutComponents" style={{marginTop:"5%"}}>
                     {this.state.creatingAProfileShow ? <AboutLogin/> : null }

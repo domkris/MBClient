@@ -9,7 +9,10 @@
 }
 .aboutNavigation{
     grid-area: aboutNavigation;
-    margin-top: 5%;
+    display: flex;
+    justify-content: center;
+    margin-top: 1%;
+    margin-bottom: 4%;
 }
 .aboutComponents{
     grid-area: aboutComponents;
@@ -18,12 +21,6 @@
     justify-content: center;
 }
 
-.aboutNavigationList{
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 .aboutNavigationList li Button{
     margin: 1%;
 }
