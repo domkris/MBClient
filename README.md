@@ -16,15 +16,6 @@ Intended for mobile phones and similar size devices.</br>
 ![promisechains](https://github.com/domkris/files/blob/master/MBClient/Demo.png?raw=true)
 <hr>
 
-<b>WCF/MessageService</b>:</br>
-not implemented
-<hr>
-<b>Class Libraries/Models</b>:</br>
-Contains models/classes generated in WPF application from tables in DbSolution
-<hr>
-<b>WPF/MainApp</b>:</br>
-Desktop WPF Administration app made for education purposes.</br>
-DB: DbSolution repository</br>
 </br>
 <ul>
   <li>Generate models: create cs files from db tables for Web application.</li>
@@ -33,11 +24,3 @@ DB: DbSolution repository</br>
 </ul>
 </br>
 </br>
-
-![promisechains](https://github.com/domkris/files/blob/master/generate_models_2.png?raw=true)
-</br>
-
-![promisechains](https://github.com/domkris/files/blob/master/administrate_user_rights_7.png?raw=true)
-</br>
-
-![promisechains](https://github.com/domkris/files/blob/master/data_encryption_2.png?raw=true)
