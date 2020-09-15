@@ -17,10 +17,3 @@ Intended for mobile phones and similar size devices.</br>
 <hr>
 
 </br>
-<ul>
-  <li>Generate models: create cs files from db tables for Web application.</li>
-  <li>Administrate user rights: edit, delete, create users and their permissions and roles.</li>
-  <li>Data encryption: encrypt/decrypt user passwords. (AES 256 CBC) </li>
-</ul>
-</br>
-</br>
