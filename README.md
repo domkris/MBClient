@@ -7,13 +7,11 @@ Intended for mobile phones and similar size devices.</br>
 (ReactJS 16.31.1, React-Bootstrap 1.3.0, Bcrypt 5.0.0, Socket.IO-Client 2.3.0)</br>
 <b>MBServer</b> is the Backend part of the Monopolbank project</br>
 (NodeJS 10.15.1, Bcrypt 5.0.0, Socket.IO 2.3.0, Express 4.17.1, Mongoose 5.9.20, Nodemon 2.0.4)</br>
-</br></br>
-<b>NETCore/WebApp.NETCore/wwwroot</b>:</br>
-Frontend part of Web login app concept made for educational purposes.</br>
-ReactJS, React-Bootstrap, JWT validation( localstorage token )
+<b>MongoDB used for the database</b>
 </br></br>
 
-![promisechains](https://github.com/domkris/files/blob/master/web_api_short.png?raw=true)
+
+![promisechains](https://github.com/domkris/files/blob/master/MBClient/login1.PNG?raw=true)
 <hr>
 
 <b>WCF/MessageService</b>:</br>
