@@ -1,10 +1,11 @@
-# AppSolution
+# Monopolbank Web App
 
 <hr>
-<b>NETCore/WebApp.NETCore</b>:</br>
-.NET Core 2.1
-Backend and Frontend Web login and JWT authentication app made for education purposes.</br>
-DB: DbSolution repository
+<b>ReactJS web app for virtual transactions in games like monopoly. </b>:</br>
+Intended for mobile phones and similar size devices.</br>
+<b>MBClient</b> Frontend part of  Monopolbank project</br>
+(React 16.31.1, React-Bootstrap 1.3.0, Bcrypt 5.0.0, Socket.IO-Client 2.3.0)
+<b>MBServer</b> Backend part of the Monopolbank project</br>
 </br></br>
 <b>NETCore/WebApp.NETCore/wwwroot</b>:</br>
 Frontend part of Web login app concept made for educational purposes.</br>
