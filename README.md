@@ -15,7 +15,6 @@ Deployed to netlify from github repository, visit at <b>https://monopolbank.netl
 </ul>
 </br>
 
-
 <hr>
 
 ![promisechains](https://github.com/domkris/files/blob/master/MBClient/Demo.png?raw=true)
