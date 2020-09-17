@@ -11,6 +11,7 @@ class AboutLogin extends React.Component{
                     <p>For the new players it is required to create a profile. Type your desired username and password and click on "Signup" button.
                     Next time just type your username and password and click on "Login" button.</p>
                 </div>
+                
                 <div>
                     <img className="aboutResponsive" src="help/login1.PNG" alt=""></img>
                     <p style ={{color:"red"}}>Never use real usernames or passwords you already use and do not share any important data like credit card numbers etc.!</p>
