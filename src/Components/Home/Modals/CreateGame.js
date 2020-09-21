@@ -6,6 +6,7 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
+import {fetchCreateGameData} from '../../../Utils/utils';
 const CreateGame = (props) => {
 
     var createdBy = sessionStorage.getItem("userData").split(',')[0];
@@ -25,14 +26,7 @@ const CreateGame = (props) => {
     
     const createGame = () => {
         if(gameName && gamePassword && gameAmount){
-            var apiUrl = ServerUrl + "/games";
-            fetch(apiUrl,{
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                  },
-                body: JSON.stringify({gameName, gamePassword, gameAmount, createdBy})})
-            .then((response) => response.json())
+            fetchCreateGameData({gameName, gamePassword, gameAmount, createdBy})
             .then((data) => {
                 if(data.success){
                     sessionStorage.setItem("game", data.gameData._id + "," + data.gameData.name + "," + data.gameData.amount);

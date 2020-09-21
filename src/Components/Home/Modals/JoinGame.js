@@ -6,6 +6,8 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
+import {fetchJoinGameData} from '../../../Utils/utils';
+
 const JoinGame = (props) => {
     const [gameName, setGameName] = useState("");
     const [gamePassword, setGamePassword] = useState("");
@@ -28,22 +30,12 @@ const JoinGame = (props) => {
         }
     }
     const joinGame = () => {
-        if(gameName && gamePassword){ 
-            var data = {gameName : gameName, gamePassword: gamePassword}
-            var apiUrl = ServerUrl + "/games/joinGame";
-            fetch(apiUrl, {
-                method: 'POST', // or 'PUT'
-                headers: {
-                  'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data),
-            })
-            .then((response) => response.json())
+        if(gameName && gamePassword){
+            fetchJoinGameData({gameName : gameName, gamePassword: gamePassword})
             .then((data) => {
                 if(!data.success)
                 {
                     alert("wrong game name or password");
-                    // ovdi ogromna greska... upises id vrati se citav objekt ! na temelju samo id-a vrati i id i sifru
                 }else {
                     sessionStorage.setItem("game", data.gameData[0]._id + "," + data.gameData[0].name + "," + data.gameData[0].amount);
                     handleJoinGameModalClose();

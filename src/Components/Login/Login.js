@@ -8,7 +8,7 @@ import {Redirect, Route} from 'react-router-dom';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {ServerUrl} from '../../Services/ServerUrl';
+import {fetchLoginData, fetchRegisterData} from '../../Utils/utils';
 import './Login.css';
 
 class Login extends React.Component{
@@ -32,55 +32,38 @@ class Login extends React.Component{
 
     login(){
         if(this.state.username && this.state.password){
-            var data = { username: this.state.username, password : this.state.password };
-            fetch(ServerUrl + '/users/login', {
-                method: 'POST', // or 'PUT'
-                headers: {
-                  'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data),
-              })
-              .then(response => response.json())
-              .then(data => {
+            fetchLoginData({ username: this.state.username, password : this.state.password })
+            .then(data => {
                 if(data.success){
                     sessionStorage.setItem('userData', data.userData._id + "," + data.userData.username);
                     this.setState({redirect : true});
                 }
                 else{
                     this.setState({showError: true});
-                    this.setState({errorMessage: data.message});
+                     this.setState({errorMessage: data.message});
                 }
-              })
-              .catch((error) => {
-                console.error('Error:', error);
-              });
+            });
         }else {
-            // upisi da je doslo do greske 
+            // empty data
         }
     }
     register(){
-        var data = { username: this.state.username, password : this.state.password };
-        fetch(ServerUrl + '/users/', {
-                method: 'POST', // or 'PUT'
-                headers: {
-                  'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data),
-              })
-              .then(response => response.json())
-              .then(data => {
+        if(this.state.username && this.state.password){
+            fetchRegisterData({ username: this.state.username, password : this.state.password })
+            .then(data => {
                 if(data.success){
-                     sessionStorage.setItem('userData', data.userData._id + "," + data.userData.username);
-                     this.setState({redirect : true});
-                }
-                else {
-                    this.setState({showError: true});
-                    this.setState({errorMessage: data.message});
-                }
-              })
-              .catch((error) => {
-                //console.error('Error:', error);
-              });
+                    sessionStorage.setItem('userData', data.userData._id + "," + data.userData.username);
+                    this.setState({redirect : true});
+               }
+               else {
+                   this.setState({showError: true});
+                   this.setState({errorMessage: data.message});
+               }
+            });
+        }
+        else{
+            // empty data 
+        }
     }
     change(e){
         this.setState({[e.target.name]: e.target.value});
@@ -89,10 +72,8 @@ class Login extends React.Component{
     submit(e){
         e.preventDefault();
         if(this.state.loginUser){
-            //LOGIN
             this.login();
         }else{
-            //REGISTER
             this.register();
         }
     }
@@ -174,6 +155,3 @@ class Login extends React.Component{
     }
 }
 export default Login;
-
-// <Button variant="outline-primary"  onClick= {this.login} type="submit">Login</Button>
-//<Button variant="outline-success"  onClick= {this.register} type="submit">SignUp</Button>

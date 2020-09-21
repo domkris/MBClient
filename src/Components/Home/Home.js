@@ -11,6 +11,7 @@ import DeleteAccount from '../Global/Modals/DeleteAccount';
 import GameCreated from '../Home/GameCreated/GameCreated';
 import {Redirect} from 'react-router-dom';
 import {ServerUrl} from '../../Services/ServerUrl';
+import {fetchFindGameData, fetchDeleteGameData} from '../../Utils/utils';
 import './Home.css';
 
 
@@ -32,7 +33,6 @@ class Home extends React.Component{
         }
         
         this.logout = this.logout.bind(this);
-        this.joinGame = this.joinGame.bind(this);
         this.deleteGame = this.deleteGame.bind(this);
         this.change = this.change.bind(this);
         this.findGame = this.findGame.bind(this);
@@ -75,18 +75,12 @@ class Home extends React.Component{
     deleteGame(i){
 
         var gameToDeleteId = this.state.foundGames[i]._id;
-
-        var url = ServerUrl + `/games/${gameToDeleteId}`;
-        fetch(url, {
-            method: 'DELETE',
-            headers: {
-              'Content-Type': 'application/json',
-            }
-        })
-        .then((response) => response.json())
+        fetchDeleteGameData(gameToDeleteId)
         .then((data) => {
-            console.log(data);
-        }).catch( err => { console.error('error', err);}); 
+        })
+        .catch( err => { 
+            console.error('error', err);
+        }); 
 
         let newList = this.state.foundGames.filter((game)=>{
             return gameToDeleteId !== game._id;
@@ -95,39 +89,24 @@ class Home extends React.Component{
         // remove from DOM
         this.setState( state => {
             state.foundGames = newList;
-            this.setState({createGamesDisabled : false})
             return state;
         });
+        this.setState({createGamesDisabled : false})
 
         alert(`game ${this.state.foundGames[i].name} successfully deleted!`);
     }
-    joinGame(){
-        var apiUrl = ServerUrl + "/games/" + this.state.gameId;
-        fetch(apiUrl)
-        .then((response) => response.json())
-        .then((data) => {
-            if(data[0].password !== this.state.gamePassword)
-            {
-                // ovdi ogromna greska... upises id vrati se citav objekt ! na temelju samo id-a vrati i id i sifru
-            }else {
-                sessionStorage.setItem("gameId", data[0]._id);
-                this.setState({redirectToGame : true})
-            }
-        });
-
-    }
     findGame(){
-        var apiUrl = ServerUrl + "/games/" + sessionStorage.getItem("userData").split(',')[0];
-        fetch(apiUrl)
-        .then((response) => response.json())
-        .then((data) => {
-            if(data.success){
-                this.setState({foundGames : data.games})
-                if(this.state.foundGames.length > 2){
-                    this.setState({createGamesDisabled : true})
+        if(sessionStorage.getItem("userData")){
+            fetchFindGameData(sessionStorage.getItem("userData").split(',')[0])
+            .then((data) => {
+                if(data.success){
+                    this.setState({foundGames : data.games})
+                    if(this.state.foundGames.length > 2){
+                        this.setState({createGamesDisabled : true})
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 
     change(e){
