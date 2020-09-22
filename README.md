@@ -3,7 +3,7 @@
 <hr>
 <b>ReactJS web app for virtual transactions in games like monopoly. </b></br>
 Intended for mobile phones and similar size devices.</br>
-Deployed to netlify from github repository, visit at <b>https://monopolbank.netlify.app/</b></br></br>
+Deployed to netlify from github repository, </br> visit at <b>https://monopolbank.netlify.app/</b></br></br>
 <ul>
   <li>Developed in <b>Visual Studio code</b></li>
   <li><b>Monopol-Bank-Web-App</b> is the Frontend part of  Monopolbank project </br>  
