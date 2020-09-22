@@ -12,6 +12,7 @@ Deployed to netlify from github repository, visit at <b>https://monopolbank.netl
   ( NodeJS 10.15.1, Bcrypt 5.0.0, Socket.IO 2.3.0, Express 4.17.1, Mongoose 5.9.20, Nodemon 2.0.4 )</li>
   <li>NoSQL <b>MongoDB</b> used for the database</li>
   <li><b>Debugger for Chrome</b> VS tool used for debugging</li>
+  <li><b>JestJs & Enyme</b> used for Unit tests</li>
 </ul>
 </br>
 
