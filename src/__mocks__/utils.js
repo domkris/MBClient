@@ -1,11 +1,64 @@
+const dummyMessageChat = {
+    type : "chat",
+    username: "dummy_0_test",
+    text: "test"
+}
+
+const dummyMessageTransaction = {
+    type : "transaction",
+    username: "dummy_0_test",
+    text: "test",
+    otherUser: "dummy_1_test"
+}
+
+const dummyMessageToBankTransaction = {
+    type : "toBankTransaction",
+    username: "dummy_0_test",
+    text: "test"
+}
+
+const dummyWelcomeMessage = {
+    type : "message",
+    username: "BOT",
+    text: "test"
+}
+
+const dummyUserStatusJoinedGame = {
+    type : "userStatus",
+    username: "dummy_0_test",
+    text: "Joined the game"
+}
+
+const dummyUserStatusLeftGame = {
+    type : "userStatus",
+    username: "dummy_0_test",
+    text: "Left the game"
+}
+
+const dummyMessageFromBankTransaction = {
+    type : "fromBankTransaction",
+    username: "dummy_0_test",
+    text: "test"
+}
+
 const dummyUser = {
-    _id: "dummy_0_user_test",
+    _id: "dummy_0_test",
         username: "test",
         password: "testesttesttesttest",
         timeCreated: "2020-09-21T09:00:39.055Z",
         __v: 0
 }
 
+const dummyOtherUser = {
+    _id: "dummy_1_test",
+        username: "test2",
+        password: "testesttesttesttest",
+        timeCreated: "2020-09-21T09:00:39.055Z",
+        __v: 0
+}
+const dummyUsersInGame = {
+    dummyUser, dummyOtherUser
+};
 const dummyGame = {
     _id: "dummy_0_game_test",
     timeCreated: "September 21, 2020 1:09 PM",
@@ -107,6 +160,7 @@ const fetchDeleteUserDataError = jest.fn(() => {
     return Promise.resolve(dataDeleteUserError);
 });
 
+
 export {
     fetchLoginData, 
     fetchLoginDataError, 
@@ -119,5 +173,13 @@ export {
     fetchFindGameData,
     fetchFindGameDataEmpty,
     fetchDeleteUserData,
-    fetchDeleteUserDataError
+    fetchDeleteUserDataError,
+    dummyUsersInGame,
+    dummyMessageChat,
+    dummyMessageTransaction,
+    dummyMessageToBankTransaction,
+    dummyMessageFromBankTransaction,
+    dummyWelcomeMessage,
+    dummyUserStatusJoinedGame,
+    dummyUserStatusLeftGame
 };
